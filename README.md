@@ -9,7 +9,7 @@ Site personnel en français : enseignement, direction marketing externalisée et
 - `direction-marketing.html` : direction marketing et communication à temps partagé
 - `agence-web.html` : offre web portée par Solayia
 - `mentions-legales.html`, `confidentialite.html` : informations juridiques et données personnelles
-- `assets/` : logo complet, lion pour la favicon et portrait fourni par Adrien
+- `assets/` : signature Lechevalier, lion pour la favicon et photo d’Adrien en intervention
 - `styles.css`, `script.js` : design partagé, menu mobile et préparation des e-mails de contact
 
 ## Prévisualisation
@@ -28,4 +28,4 @@ Le site est statique et ne nécessite ni compilation ni clés d'API. Publier la 
 
 Les liens internes sont relatifs pour fonctionner avec un chemin de dépôt GitHub Pages. Les formulaires préparent un e-mail vers `adrien.lechevalier@solayia.fr` dans la messagerie du visiteur : l'envoi final doit y être confirmé. Les liens directs vers cette adresse et l'agenda restent disponibles. Il n'y a pas de service de formulaire côté serveur ni de traqueur ajouté par ce site. Les polices système prennent le relais si Google Fonts ne charge pas.
 
-Les mentions légales utilisent les données publiques de SOLAYIA (SIREN 992 983 569) comme éditeur présumé du site personnel. Avant de les considérer comme définitives, Adrien doit confirmer cette qualité d'éditeur et communiquer un numéro de téléphone professionnel à publier. GitHub ne fournit pas de numéro d'hébergeur clairement affiché dans son assistance ; vérifier ce point si les mentions sont utilisées comme document légal final. Mettre à jour les affirmations chiffrées si les chiffres définitifs du CV changent.
+Les mentions légales identifient Adrien Lechevalier comme éditeur à titre personnel, sans informations juridiques de Solayia ni numéro de téléphone. La page de confidentialité reprend Adrien comme responsable du traitement. Mettre à jour les affirmations chiffrées si les chiffres définitifs du CV changent.
