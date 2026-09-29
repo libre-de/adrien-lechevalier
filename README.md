@@ -9,7 +9,7 @@ Site personnel en français : enseignement, direction marketing externalisée et
 - `direction-marketing.html` : direction marketing et communication à temps partagé
 - `agence-web.html` : offre web portée par Solayia
 - `mentions-legales.html`, `confidentialite.html` : informations juridiques et données personnelles
-- `assets/` : logo du menu et du pied de page copié à l’identique, lion pour la favicon et photo d’Adrien en intervention
+- `assets/` : logo du menu et du pied de page copié à l’identique, lion pour la favicon et portrait d’Adrien
 - `styles.css`, `script.js` : design partagé et menu mobile
 
 ## Prévisualisation
