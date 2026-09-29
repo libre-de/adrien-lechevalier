@@ -23,17 +23,43 @@ if (toggle && mobileNav) {
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = new Date().getFullYear(); });
 
 document.querySelectorAll('[data-contact-form]').forEach(form => {
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
-    const name = form.querySelector('[name="Nom"]').value.trim();
-    const email = form.querySelector('[name="Email"]').value.trim();
-    const message = form.querySelector('[name="Message"]').value.trim();
-    if (!name || !email || !message) return;
+    const status = form.querySelector('.form-note');
+    const button = form.querySelector('button[type="submit"]');
+    const endpoint = form.action;
+    if (endpoint.includes('FORM_ENDPOINT_PENDING')) {
+      status.textContent = 'Le formulaire est en cours d’activation. Vous pouvez réserver un échange ci-dessous.';
+      return;
+    }
 
-    const subject = form.dataset.subject || 'Prise de contact depuis le site';
-    const body = `Bonjour Adrien,\n\n${message}\n\nNom : ${name}\nE-mail : ${email}`;
-    window.location.href = `mailto:adrien.lechevalier@solayia.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const label = button.innerHTML;
+    button.disabled = true;
+    button.textContent = 'Envoi en cours…';
+    status.textContent = 'Envoi de votre demande…';
+
+    try {
+      const ajaxEndpoint = endpoint.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+      const response = await fetch(ajaxEndpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      const result = await response.json();
+      if (!response.ok || result.success === false || result.success === 'false') {
+        throw new Error('Envoi refusé');
+      }
+      form.reset();
+      status.textContent = 'Merci, votre message a bien été envoyé. Je vous répondrai rapidement.';
+      status.classList.add('form-note--success');
+    } catch {
+      status.textContent = 'L’envoi a échoué. Merci de réessayer ou de réserver un échange.';
+      status.classList.remove('form-note--success');
+    } finally {
+      button.disabled = false;
+      button.innerHTML = label;
+    }
   });
 });
