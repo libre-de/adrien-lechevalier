@@ -199,7 +199,6 @@ img, svg { display: block; max-width: 100%; }
 .footer-brand { max-width: 340px; }
 .footer-lockup { width: 230px; height: 76px; }
 .footer-logo { width: 240px; height: 240px; }
-.footer-logo { width: 340px; height: 340px; }
 .footer-brand p { color: #bbb; font-size: .9rem; }
 .footer-grid h3 { margin: 0 0 1rem; font: 700 .75rem var(--heading); text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; }
