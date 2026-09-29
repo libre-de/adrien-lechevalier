@@ -193,7 +193,7 @@ img, svg { display: block; max-width: 100%; }
 .contact-card h3 { margin: .45rem 0 .55rem; font: 600 clamp(1.55rem, 2.5vw, 2rem)/1.15 var(--heading); letter-spacing: -.055em; }
 .contact-card p { max-width: 470px; margin: 0; color: #ccc; font-size: .94rem; }
 .contact-card .button { white-space: nowrap; }
-.contact-card .contact-note { grid-column: 1 / -1; padding-top: 1rem; border-top: 1px solid #444; color: #aaa; font-size: .78rem; }
+.contact-card .contact-note { grid-column: 1 / -1; max-width: none; padding-top: 1rem; border-top: 1px solid #444; color: #aaa; font-size: .78rem; }
 .site-footer { padding: 3rem 0 2rem; background: var(--ink); color: #eee; border-top: 1px solid #444; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; padding-bottom: 3rem; }
 .footer-brand { max-width: 340px; }
