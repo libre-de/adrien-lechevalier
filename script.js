@@ -21,3 +21,19 @@ if (toggle && mobileNav) {
 }
 
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = new Date().getFullYear(); });
+
+document.querySelectorAll('[data-contact-form]').forEach(form => {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const name = form.querySelector('[name="Nom"]').value.trim();
+    const email = form.querySelector('[name="Email"]').value.trim();
+    const message = form.querySelector('[name="Message"]').value.trim();
+    if (!name || !email || !message) return;
+
+    const subject = form.dataset.subject || 'Prise de contact depuis le site';
+    const body = `Bonjour Adrien,\n\n${message}\n\nNom : ${name}\nE-mail : ${email}`;
+    window.location.href = `mailto:adrien.lechevalier@solayia.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+});
