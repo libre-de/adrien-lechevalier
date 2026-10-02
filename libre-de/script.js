@@ -9,7 +9,7 @@ if (word && !reducedMotion.matches) setInterval(() => {
   word.style.animation = 'none';
   void word.offsetWidth;
   word.style.animation = '';
-}, 2800);
+}, 2240);
 const menu = document.querySelector('#navigation');
 const toggle = document.querySelector('.menu-toggle');
 const close = menu.querySelector('.nav-close');
