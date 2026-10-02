@@ -4,11 +4,27 @@
 .hero-video, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-video { object-fit: cover; z-index: -2; }
 .hero-shade { background: linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.15) 40%,rgba(0,0,0,.62)); z-index: -1; }
-.hero h1 { max-width: 100%; font-size: clamp(48px,9.4vw,148px); }
+.hero h1 { max-width: 100%; font-size: clamp(36px,7.05vw,111px); }
 .hero .side-label { left: -45px; }
 .video-toggle { position: absolute; right: 28px; bottom: 24px; border: 1px solid #ffffff80; color: white; background: #0006; padding: 8px 14px; font-size: 12px; cursor: pointer; }
 #approche .two-col { grid-template-columns: 1fr; max-width: 620px; }
 .manifesto { max-width: 24ch; margin-inline: auto; text-align: center; }
 #expertises .expertise-grid { margin-inline: auto; }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
-@media (max-width: 900px) { .hero h1 { font-size: clamp(32px,11.2vw,88px); } .video-toggle { right: 6vw; bottom: 18px; } }
+@media (max-width: 900px) { .hero h1 { font-size: clamp(24px,8.4vw,66px); } .video-toggle { right: 6vw; bottom: 18px; } }
+
+.hero-prefix { display: block; }
+.hero h1 { margin: 0; }
+.manifesto span { display: block; }
+.manifesto-second { margin-top: 1.1em; }
+.school-logo { display: block; width: 170px; max-width: 100%; height: auto; margin-top: 12px; filter: grayscale(1) contrast(1.05); mix-blend-mode: multiply; }
+.facts strong a { text-decoration: underline; text-underline-offset: 3px; }
+.form-privacy { font-size: 12px; line-height: 1.6; }
+.form-privacy a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-main { padding-top: 130px; padding-bottom: 80px; max-width: 1060px; margin-inline: auto; }
+.legal-main h1 { font-size: clamp(36px,5vw,64px); font-weight: 700; line-height: 1.05; letter-spacing: -.04em; margin: 28px 0 40px; }
+.legal-main h2 { font-size: 24px; font-weight: 600; margin: 36px 0 16px; }
+.legal-main p, .legal-main li { font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+.legal-main ul { list-style: disc; padding-left: 24px; }
+.legal-main a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-main .legal-date { font-size: 12px; }

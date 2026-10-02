@@ -22,3 +22,11 @@ La route `/hcgi/platform/api/collections/contact_messages/records` reprend le ba
 ## Fichiers
 
 `index.html`, `styles.css`, `script.js` sont éditables ; `assets/original.css` conserve le style public original ; vidéo, affiche et portrait sont stockés localement.
+
+## Mise à jour du 2 octobre 2026
+
+Titres de la première vue réduits de 25 %, élisions d’oser et d’entreprendre, manifeste en deux blocs, expériences et diplômes actualisés, logo Sciences Po Aix affiché en niveaux de gris par CSS, et deux pages légales adaptées à Adrien Lechevalier EI.
+
+Sources : https://www.pappers.fr/entreprise/lechevalier-adrien-834916413 ; https://www.solayia.fr/legal.html ; https://entreprendre.service-public.gouv.fr/vosdroits/F31228 ; CNIL.
+
+Les coordonnées téléphoniques de l’éditeur et de l’hébergeur doivent être complétées avec des numéros vérifiés. L’adresse email existante du site est reprise ; vérifier qu’elle reçoit les messages. La fiche Pappers mentionne actuellement une activité immobilière : les activités de communication/enseignement en cours de déclaration ne sont pas présentées comme déjà enregistrées. Les règles de conservation annoncées doivent être appliquées dans la messagerie et le service de formulaire.

@@ -2,8 +2,9 @@ const words = ['réussir', 'briller', 'oser', 'créer', 'entreprendre'];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const word = document.querySelector('.word-swap');
 let index = 0;
-if (!reducedMotion.matches) setInterval(() => {
+if (word && !reducedMotion.matches) setInterval(() => {
   index = (index + 1) % words.length;
+  document.querySelector('.hero-prefix').textContent = ['oser', 'entreprendre'].includes(words[index]) ? "Libre d’" : 'Libre de';
   word.textContent = words[index] + '.';
   word.style.animation = 'none';
   void word.offsetWidth;
@@ -31,6 +32,7 @@ document.addEventListener('keydown', event => {
   }
 });
 const video = document.querySelector('.hero-video');
+if (video) {
 const pause = document.createElement('button');
 pause.className = 'video-toggle'; pause.type = 'button';
 video.after(pause);
@@ -39,8 +41,9 @@ pause.addEventListener('click', () => { if (video.paused) video.play().catch(vid
 video.addEventListener('play', videoLabel); video.addEventListener('pause', videoLabel);
 if (reducedMotion.matches) { video.autoplay = false; video.pause(); }
 videoLabel();
+}
 const form = document.querySelector('.contact-form');
-form.addEventListener('submit', async event => {
+if (form) form.addEventListener('submit', async event => {
   event.preventDefault();
   const button = form.querySelector('.submit');
   const feedback = form.querySelector('.form-feedback');
@@ -60,4 +63,10 @@ form.addEventListener('submit', async event => {
     feedback.classList.add('form-feedback-error');
     feedback.textContent = 'Le message n’a pas pu être envoyé. Réessayez ou utilisez le lien « Écrire un mail ».';
   } finally { button.disabled = false; button.textContent = '→ Envoyer'; }
+});
+
+// L’aperçu GitHub et le domaine Hostinger indiquent leur hébergeur respectif.
+document.querySelectorAll('[data-host]').forEach(block => {
+  const github = location.hostname.endsWith('.github.io');
+  block.hidden = block.dataset.host === 'github' ? !github : github;
 });
