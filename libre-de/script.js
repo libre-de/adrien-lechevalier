@@ -1,10 +1,10 @@
-const words = ['réussir', 'briller', 'oser', 'créer', 'entreprendre'];
+const words = ['réussir', 'briller', 'provoquer', 'créer', 'voir grand'];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const word = document.querySelector('.word-swap');
 let index = 0;
 if (word && !reducedMotion.matches) setInterval(() => {
   index = (index + 1) % words.length;
-  document.querySelector('.hero-prefix').textContent = ['oser', 'entreprendre'].includes(words[index]) ? "Libre d’" : 'Libre de';
+  document.querySelector('.hero-prefix').textContent = 'Libre de';
   word.textContent = words[index] + '.';
   word.style.animation = 'none';
   void word.offsetWidth;
