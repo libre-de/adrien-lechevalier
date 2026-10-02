@@ -1,0 +1,14 @@
+/* Ajustements sur le style original récupéré de libre-de.com. */
+[hidden] { display: none !important; }
+.hero { overflow: hidden; isolation: isolate; }
+.hero-video, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-video { object-fit: cover; z-index: -2; }
+.hero-shade { background: linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.15) 40%,rgba(0,0,0,.62)); z-index: -1; }
+.hero h1 { max-width: 100%; font-size: clamp(48px,9.4vw,148px); }
+.hero .side-label { left: -45px; }
+.video-toggle { position: absolute; right: 28px; bottom: 24px; border: 1px solid #ffffff80; color: white; background: #0006; padding: 8px 14px; font-size: 12px; cursor: pointer; }
+#approche .two-col { grid-template-columns: 1fr; max-width: 620px; }
+.manifesto { max-width: 24ch; margin-inline: auto; text-align: center; }
+#expertises .expertise-grid { margin-inline: auto; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+@media (max-width: 900px) { .hero h1 { font-size: clamp(32px,11.2vw,88px); } .video-toggle { right: 6vw; bottom: 18px; } }
