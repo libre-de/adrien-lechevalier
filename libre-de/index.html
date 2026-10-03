@@ -34,7 +34,16 @@
    @media(max-width:900px) { #approche .about-layout { grid-template-columns:1fr; gap:20px; } #libre-about-art { max-width:620px; margin-inline:auto; } }
    #adrien .portrait-frame { position:relative; overflow:hidden; aspect-ratio:4 / 5; width:100%; }
    #adrien .portrait-frame .portrait { display:block; height:100%; }
-   #adrien .portrait-motion { position:absolute; inset:0; display:block; width:100%; height:100%; filter:grayscale(1) contrast(1.05); }
+   #adrien .portrait-scene { position:absolute; height:100%; width:125%; left:-12.5%; top:0; filter:grayscale(1) contrast(1.05); }
+   #adrien .portrait-scene img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:fill; }
+   #adrien .portrait-person { position:absolute; inset:0; -webkit-mask-image:url('assets/adrien-people-mask.webp'); mask-image:url('assets/adrien-people-mask.webp'); -webkit-mask-size:100% 100%; mask-size:100% 100%; mask-mode:alpha; animation:person-depth 11s ease-in-out infinite alternate; animation-play-state:paused; }
+   #adrien .portrait-person--left { clip-path:polygon(0 30%,25% 30%,25% 100%,0 100%); transform-origin:11% 80%; animation-duration:13s; }
+   #adrien .portrait-person--runner { clip-path:polygon(25% 0,70.5% 0,70.5% 59%,70.5% 62%,66% 66%,66% 100%,25% 100%); transform-origin:49% 92%; animation-duration:11s; }
+   #adrien .portrait-person--right { clip-path:polygon(70.5% 30%,100% 30%,100% 100%,66% 100%,66% 66%,70.5% 62%,70.5% 59%); transform-origin:85% 88%; animation-duration:12s; }
+   #adrien .portrait-layered > .portrait { opacity:0; }
+   #adrien .portrait-visible .portrait-person { animation-play-state:running; }
+   @keyframes person-depth { from { transform:scale(1); } to { transform:scale(1.018); } }
+   @media(prefers-reduced-motion:reduce) { #adrien .portrait-person { animation:none; } }
   </style>
  </head>
  <body>
@@ -390,5 +399,24 @@
  resize();requestAnimationFrame(frame);
 })();
 </script>
+  <script>
+(() => {
+ const frame=document.querySelector('#adrien .portrait-frame');
+ if(!frame || !CSS.supports('mask-image','url("assets/adrien-people-mask.webp")')) return;
+ const original=frame.querySelector('.portrait');
+ const urls=['assets/adrien-background.webp','assets/adrien-people-mask.webp'];
+ Promise.all(urls.map(src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=resolve;im.onerror=reject;im.src=src;}))).then(()=>{
+   const scene=document.createElement('div');scene.className='portrait-scene';scene.setAttribute('aria-hidden','true');
+   const background=document.createElement('img');background.src=urls[0];background.alt='';background.className='portrait-background';scene.appendChild(background);
+   for(const person of ['left','runner','right']){
+     const layer=document.createElement('div');layer.className='portrait-person portrait-person--'+person;
+     const pixels=document.createElement('img');pixels.src=original.getAttribute('src');pixels.alt='';layer.appendChild(pixels);scene.appendChild(layer);
+   }
+   frame.appendChild(scene);frame.classList.add('portrait-layered');
+   new IntersectionObserver(entries=>{frame.classList.toggle('portrait-visible',entries[0].isIntersecting);}).observe(frame);
+ }).catch(()=>{});
+})();
+
+  </script>
  </body>
 </html>
