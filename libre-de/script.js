@@ -49,19 +49,18 @@ if (form) form.addEventListener('submit', async event => {
   const feedback = form.querySelector('.form-feedback');
   button.disabled = true; button.textContent = '→ Envoi…'; feedback.textContent = '';
   try {
-    // Route PocketBase utilisée par le site Hostinger original.
-    // Elle doit être conservée ou remplacée sur tout nouvel hébergement.
-    const response = await fetch('/hcgi/platform/api/collections/contact_messages/records', {
+    const response = await fetch('/contact.php', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(Object.fromEntries(new FormData(form)))
     });
-    if (!response.ok) throw new Error('Échec de l’envoi');
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.message || 'Échec de l’envoi');
     feedback.classList.remove('form-feedback-error');
     feedback.textContent = 'Merci. Votre message est bien parti, je vous réponds rapidement.';
     form.reset();
-  } catch {
+  } catch (error) {
     feedback.classList.add('form-feedback-error');
-    feedback.textContent = 'Le message n’a pas pu être envoyé. Réessayez ou utilisez le lien « Écrire un mail ».';
+    feedback.textContent = error.message === 'Failed to fetch' ? 'Connexion interrompue. Réessayez ou utilisez le lien « Écrire un mail ».' : (error.message || 'Le message n’a pas pu être envoyé. Réessayez.');
   } finally { button.disabled = false; button.textContent = '→ Envoyer'; }
 });
 
