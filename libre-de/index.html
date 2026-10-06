@@ -33,6 +33,10 @@
    #libre-about-art .organic-stage { width:100%; aspect-ratio:1.4; min-height:260px; }
    #libre-about-art canvas { display:block; width:100%; height:100%; }
    @media(max-width:900px) { #approche .about-layout { grid-template-columns:1fr; gap:20px; } #libre-about-art { max-width:620px; margin-inline:auto; } }
+   #expertises .why-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,5vw,80px); align-items:start; margin-top:clamp(48px,6vw,88px); }
+   #expertises .why-heading { margin:0; font-family:inherit; font-size:clamp(26px,3vw,42px); font-weight:700; line-height:1.2; letter-spacing:-0.025em; text-align:left; }
+   #expertises .why-story { margin:0; font-family:inherit; font-size:clamp(18px,1.5vw,22px); font-weight:400; line-height:1.6; text-align:left; }
+   @media(max-width:760px) { #expertises .why-layout { grid-template-columns:1fr; gap:24px; } }
   </style>
  </head>
  <body>
@@ -166,8 +170,10 @@
        Publicité
       </a>
      </div>
-     <h2 class="display manifesto" style="margin-top:clamp(40px,5vw,72px);"><span>Pourquoi ? car mon why, c'est de tirer les gens vers le haut pour leur offrir davantage de liberté.</span></h2>
-     <p style="font-family:inherit;font-size:clamp(18px,1.8vw,24px);line-height:1.6;max-width:850px;margin:clamp(24px,3vw,40px) auto 0;text-align:center;">Mes parents ont toujours cherché à élever les autres et à se mettre à leur service. J’ai grandi avec cet exemple : aider quelqu’un à avancer, partager ce que l’on sait et contribuer à sa réussite. C’est ce qui m’anime aujourd’hui.</p>
+     <div class="why-layout">
+      <h2 class="why-heading">Pourquoi ? car mon why, c'est de tirer les gens vers le haut pour leur offrir davantage de liberté.</h2>
+      <p class="why-story">Mes parents ont toujours cherché à élever les autres et à se mettre à leur service. J’ai grandi avec cet exemple : aider quelqu’un à avancer, partager ce que l’on sait et contribuer à sa réussite. C’est ce qui m’anime aujourd’hui.</p>
+     </div>
     </section>
     <section class="section section--paper" id="adrien">
      <span class="side-label">
