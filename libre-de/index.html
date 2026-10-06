@@ -120,7 +120,7 @@
      </div>
       </div>
      <div id="libre-about-art">
-      <div class="organic-stage"><canvas aria-hidden="true"></canvas></div>
+      <div class="organic-stage"><canvas role="img" aria-label="Une forme organique se transforme en phare et diffuse sa lumière."></canvas></div>
      </div>
      </div>
     </section>
@@ -347,41 +347,26 @@
   <script defer="" src="script.js?v=20261005-contact">
   </script>
   <script>
-(() => {
- const root=document.getElementById('libre-about-art');
- const canvas=root.querySelector('canvas'), ctx=canvas.getContext('2d');
- let visible=true;
- let width=0,height=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,time=0,last=0,mx=0,my=0,tx=0,ty=0;
- const resize=()=>{const b=canvas.getBoundingClientRect();width=b.width;height=b.height;const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*d);canvas.height=Math.round(height*d);ctx.setTransform(d,0,0,d,0,0);draw();};
- const point=(u,v)=>{
-   const a=u*Math.PI*2;
-   const breath=Math.sin(time*0.65);
-   const radius=1+0.23*Math.sin(3*a-time*0.52)+0.12*Math.cos(2*a+time*0.73);
-   const ribbon=(0.24+0.10*Math.sin(2*a+time*0.58))*v;
-   const twist=2*a+0.65+0.65*Math.sin(time*0.48);
-   const x=(radius+ribbon*Math.cos(twist))*Math.cos(a)*(1+0.23*breath);
-   const y=(radius+ribbon*Math.cos(twist))*Math.sin(a)*(1-0.18*breath);
-   const z=ribbon*Math.sin(twist)+0.18*Math.sin(2*a-time*0.61);
-   const angle=-0.18+0.16*Math.sin(time*0.29)+mx*0.09;
-   return [(x*Math.cos(angle)-y*Math.sin(angle))*width*0.235+width*0.50,(x*Math.sin(angle)+y*Math.cos(angle)+z*0.65+my*0.05)*height*0.265+height*0.50];
- };
- function draw(){
-   ctx.clearRect(0,0,width,height);
-   ctx.lineCap='round';ctx.lineJoin='round';
-   for(let j=0;j<25;j++){
-     const v=(j/24-0.5)*2;
-     ctx.beginPath();
-     for(let k=0;k<=300;k++){const p=point(k/300,v);if(k===0)ctx.moveTo(...p);else ctx.lineTo(...p);}
-     ctx.closePath();ctx.strokeStyle='#222220';ctx.lineWidth=0.7;ctx.globalAlpha=0.8;ctx.stroke();
-   }
-   ctx.globalAlpha=1;
- }
- canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;});
- canvas.addEventListener('pointerleave',()=>{tx=0;ty=0;});
- new ResizeObserver(resize).observe(canvas);
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{rootMargin:'100px'}).observe(root);
- function frame(now){if(!root.isConnected)return;if(!paused && visible && !document.hidden){time+=Math.min((now-last)/1000,0.05)*1.2;mx+=(tx-mx)*0.035;my+=(ty-my)*0.035;draw();}last=now;requestAnimationFrame(frame);}
- resize();requestAnimationFrame(frame);
+(()=>{
+const root=document.getElementById('libre-about-art'),canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
+const N=440,L=27,TAU=Math.PI*2;
+// Contour continu : pointe, lanterne, galerie, tour et socle.
+const vertices=[[0,-208],[42,-177],[30,-177],[30,-133],[49,-133],[49,-119],[30,-119],[57,171],[72,171],[72,188],[-72,188],[-72,171],[-57,171],[-30,-119],[-49,-119],[-49,-133],[-30,-133],[-30,-177],[-42,-177],[0,-208]];
+const lengths=[0];for(let i=1;i<vertices.length;i++)lengths.push(lengths[i-1]+Math.hypot(vertices[i][0]-vertices[i-1][0],vertices[i][1]-vertices[i-1][1]));
+const total=lengths.at(-1),target=[];for(let i=0;i<N;i++){let d=i/N*total,j=1;while(lengths[j]<d)j++;const f=(d-lengths[j-1])/(lengths[j]-lengths[j-1]);target.push([vertices[j-1][0]*(1-f)+vertices[j][0]*f,vertices[j-1][1]*(1-f)+vertices[j][1]*f]);}
+const ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*x*(x*(x*6-15)+10)};
+let w=800,h=590;function resize(){const bounds=canvas.getBoundingClientRect();w=bounds.width;h=bounds.height;const d=Math.min(devicePixelRatio||1,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0)draw(performance.now());}new ResizeObserver(resize).observe(root);
+const motionQuery=matchMedia('(prefers-reduced-motion: reduce)');let reduced=motionQuery.matches,time=0,last=performance.now(),visible=true;
+motionQuery.addEventListener('change',e=>{reduced=e.matches;draw(performance.now());});
+new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{rootMargin:'100px'}).observe(root);
+function draw(now){const t=time,phase=t%18;let blend=phase<3?0:phase<8?ease((phase-3)/5):phase<13?1:phase<17?1-ease((phase-13)/4):0;if(reduced)blend=1;
+ctx.clearRect(0,0,w,h);ctx.save();ctx.translate(w/2,h/2+12*w/800);ctx.scale(w/800,w/800);ctx.lineWidth=.72;
+for(let k=0;k<L;k++){const q=k/(L-1),local=blend;ctx.beginPath();for(let i=0;i<N;i++){const a=i/N*TAU-Math.PI/2;const r=207+35*Math.sin(3*a+t*.42+q*.75)+20*Math.cos(2*a-t*.31+q*1.2);const band=(q-.5)*(63+22*Math.sin(3*a+t*.3));const x=(r+band)*Math.cos(a)*1.19,y=(r+band)*Math.sin(a)*.84;const s=1-q*.38;const tx=target[i][0]*s,ty=target[i][1]*s+q*13;const px=x*(1-local)+tx*local,py=y*(1-local)+ty*local;i?ctx.lineTo(px,py):ctx.moveTo(px,py);}ctx.closePath();ctx.strokeStyle=`rgba(34,34,32,${.7+blend*.1})`;ctx.stroke();}
+const light=ease((blend-.82)/.18);if(light>0){const sweep=Math.sin(t*.7)*.13;for(let k=0;k<19;k++){const q=k/18,spread=(q-.5)*.43;ctx.beginPath();ctx.moveTo(33,-153+q*10);ctx.bezierCurveTo(115,-151+q*10,214,-154+(spread+sweep)*170,345,-149+(spread+sweep)*310);ctx.strokeStyle=`rgba(34,34,32,${light*(.25+.3*Math.sin(q*Math.PI))})`;ctx.stroke();ctx.beginPath();ctx.moveTo(-33,-153+q*10);ctx.bezierCurveTo(-115,-151+q*10,-214,-154+(spread-sweep)*170,-345,-149+(spread-sweep)*310);ctx.stroke();}
+ctx.beginPath();ctx.ellipse(0,-149,9,5,0,0,TAU);ctx.fillStyle=`rgba(34,34,32,${light*.76})`;ctx.fill();}
+ctx.restore();}
+function frame(now){if(!root.isConnected)return;if(!reduced&&visible&&!document.hidden){time+=Math.min((now-last)/1000,.05);draw(now);}last=now;requestAnimationFrame(frame);}
+resize();requestAnimationFrame(frame);
 })();
 </script>
  </body>
