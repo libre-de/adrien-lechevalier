@@ -355,7 +355,7 @@ const vertices=[[0,-208],[42,-177],[30,-177],[30,-133],[49,-133],[49,-119],[30,-
 const lengths=[0];for(let i=1;i<vertices.length;i++)lengths.push(lengths[i-1]+Math.hypot(vertices[i][0]-vertices[i-1][0],vertices[i][1]-vertices[i-1][1]));
 const total=lengths.at(-1),target=[];for(let i=0;i<N;i++){let d=i/N*total,j=1;while(lengths[j]<d)j++;const f=(d-lengths[j-1])/(lengths[j]-lengths[j-1]);target.push([vertices[j-1][0]*(1-f)+vertices[j][0]*f,vertices[j-1][1]*(1-f)+vertices[j][1]*f]);}
 const ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*x*(x*(x*6-15)+10)};
-let w=800,h=590;function resize(){const bounds=canvas.getBoundingClientRect();w=bounds.width;h=bounds.height;const d=Math.min(devicePixelRatio||1,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0)draw(performance.now());}new ResizeObserver(resize).observe(root);
+let w=800,h=590;function resize(){const bounds=canvas.getBoundingClientRect();w=bounds.width;h=bounds.height;const d=Math.min(devicePixelRatio||1,2);canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0);draw(performance.now());}new ResizeObserver(resize).observe(root);
 const motionQuery=matchMedia('(prefers-reduced-motion: reduce)');let reduced=motionQuery.matches,time=0,last=performance.now(),visible=true;
 motionQuery.addEventListener('change',e=>{reduced=e.matches;draw(performance.now());});
 new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{rootMargin:'100px'}).observe(root);
