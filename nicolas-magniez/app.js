@@ -1,5 +1,20 @@
 const phone = '+33647006159';
 document.querySelectorAll('[data-phone]').forEach(el => el.href = 'tel:' + phone);
+document.querySelectorAll('[data-reveal-phone]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    if (el.dataset.revealed === 'true') {
+      window.location.href = 'tel:' + phone;
+      return;
+    }
+    el.dataset.revealed = 'true';
+    el.textContent = '06 47 00 61 59';
+    el.setAttribute('aria-label', 'Appeler Nicolas Magniez au 06 47 00 61 59');
+    el.setAttribute('title', 'Cliquer de nouveau pour appeler');
+    window.dispatchEvent(new CustomEvent('lecarre:phone_revealed', {detail:{location:el.closest('header')?'header':'contact'}}));
+    if (Array.isArray(window.dataLayer)) window.dataLayer.push({event:'phone_revealed',phone_location:el.closest('header')?'header':'contact'});
+  });
+});
 document.querySelectorAll('[data-sms]').forEach(el => el.href = 'sms:' + phone + '?body=' + encodeURIComponent('Bonjour Nicolas, je souhaite vous parler de ma toiture.'));
 
 document.querySelectorAll('form[data-lead]').forEach(form => {
@@ -44,11 +59,12 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const point = guide.getPointAtLength(total * progress);
     const lookAhead = guide.getPointAtLength(Math.min(total, total * Math.min(progress + 0.012, 1)));
     const angle = Math.atan2(lookAhead.y - point.y, lookAhead.x - point.x) * 180 / Math.PI;
+    const uprightAngle = Math.max(-32, Math.min(32, angle - 90));
 
     const x = (point.x / 1000) * window.innerWidth;
     const y = (point.y / 1000) * window.innerHeight;
 
-    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${angle + 24}deg)`;
+    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${uprightAngle}deg)`;
     path.style.strokeDashoffset = `${total * (1 - progress)}`;
 
     journey.classList.toggle('active', progress > 0.015 && progress <= 1);
