@@ -1,3 +1,12 @@
+// Afficher l'image dès le premier rendu, puis remplacer par la vidéo dès qu'une frame est prête.
+document.querySelectorAll('.hero-media video').forEach(video => {
+  const showVideo = () => video.closest('.hero-media')?.classList.add('video-ready');
+  if (video.readyState >= 2) showVideo();
+  else video.addEventListener('loadeddata', showVideo, {once:true});
+  const play = video.play();
+  if (play && typeof play.catch === 'function') play.catch(() => {});
+});
+
 const phone = '+33647006159';
 document.querySelectorAll('[data-phone]').forEach(el => el.href = 'tel:' + phone);
 document.querySelectorAll('[data-reveal-phone]').forEach(el => {
