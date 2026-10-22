@@ -48,7 +48,7 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const x = (point.x / 1000) * window.innerWidth;
     const y = (point.y / 1000) * window.innerHeight;
 
-    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${angle + 8}deg)`;
+    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${angle + 24}deg)`;
     path.style.strokeDashoffset = `${total * (1 - progress)}`;
 
     journey.classList.toggle('active', progress > 0.015 && progress <= 1);
