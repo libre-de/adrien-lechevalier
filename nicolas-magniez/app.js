@@ -59,7 +59,7 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     // La trajectoire reste celle d'origine. Sa fin se stabilise sur le footer,
     // sans déport artificiel à droite ni bascule de la tuile.
-    const travel = Math.min(progress, 0.92);
+    const travel = Math.min(progress, 0.90);
     const point = guide.getPointAtLength(total * travel);
     const lookAhead = guide.getPointAtLength(Math.min(total, total * (travel + 0.012)));
     const angle = Math.atan2(lookAhead.y - point.y, lookAhead.x - point.x) * 180 / Math.PI;
@@ -68,14 +68,17 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const footerRect = endTarget.getBoundingClientRect();
     const landing = clamp((progress - 0.86) / 0.14, 0, 1);
     const eased = landing * landing * (3 - 2 * landing);
-    const footerX = window.innerWidth * 0.52;
-    const footerY = clamp(footerRect.top + Math.min(footerRect.height * 0.42, 64), 50, viewportH - 58);
+    const footerX = window.innerWidth * (window.innerWidth < 760 ? 0.68 : 0.70);
+    const footerY = clamp(footerRect.top + 34, 50, viewportH - 75);
     const x = (point.x / 1000) * window.innerWidth * (1 - eased) + footerX * eased;
     const y = (point.y / 1000) * viewportH * (1 - eased) + footerY * eased;
     const finalAngle = uprightAngle * (1 - eased);
 
     follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${finalAngle}deg)`;
-    path.style.strokeDashoffset = `${total * (1 - progress)}`;
+    path.style.strokeDashoffset = `${total * (1 - travel)}`;
+    // Le sillage s'efface dans les derniers centimètres : pas de boucle dans le footer.
+    const trailFade = 1 - clamp((progress - 0.85) / 0.10, 0, 1);
+    journey.querySelector('.journey-layer').style.opacity = String(trailFade);
 
     journey.classList.toggle('active', progress > 0.015 && progress <= 1);
     journey.classList.toggle('at-end', progress >= 0.999);
