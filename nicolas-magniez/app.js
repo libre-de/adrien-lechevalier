@@ -1,1 +1,14 @@
-document.documentElement.classList.add('js');const topbar=document.querySelector('.top');addEventListener('scroll',()=>topbar.classList.toggle('scrolled',scrollY>30),{passive:true});if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>io.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('show'));document.querySelectorAll('form[data-lead]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();if(!f.reportValidity())return;let d=new FormData(f);let lines=Array.from(d.entries()).filter(x=>x[0]!=='consent').map(x=>x[0]+': '+x[1]).join('\n');location.href='mailto:nicolas.magniez@me.com?subject='+encodeURIComponent('Demande de contact — Le Carré')+'&body='+encodeURIComponent(lines);f.querySelector('[data-status]').textContent='Votre messagerie s’ouvre : pensez à envoyer le message.'}))
+const phone = '+33647006159';
+document.querySelectorAll('[data-phone]').forEach(el=>el.href='tel:'+phone);
+document.querySelectorAll('[data-sms]').forEach(el=>el.href='sms:'+phone+'?body='+encodeURIComponent('Bonjour Nicolas, je souhaite vous parler de ma toiture.'));
+document.querySelectorAll('form[data-lead]').forEach(form=>{
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    const data = new FormData(form);
+    const lines=[];
+    for(const [k,v] of data.entries()){ if(k!=='consent') lines.push(`${k} : ${v}`); }
+    const body=['Bonjour Nicolas,','',...lines,'','Merci.'].join('\n');
+    window.location.href='mailto:nicolas.magniez@me.com?subject='+encodeURIComponent('Demande via le site Le Carré')+'&body='+encodeURIComponent(body);
+  });
+});
