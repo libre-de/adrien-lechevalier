@@ -124,3 +124,12 @@ img,video{display:block;max-width:100%}
 .tile-journey > svg.journey-layer{position:absolute!important;inset:0;width:100%;height:100%}
 .tile-journey.at-end .tile-follower svg.tile-square{transform:scale(.85)}
 @media(max-width:760px){.tile-follower{width:64px!important;height:80px!important}}
+
+/* V7.2 — tuile mono-corps identique à l'aperçu SVG validé */
+.tile-follower{width:90px!important;height:110px!important;filter:drop-shadow(0 8px 11px rgba(78,36,25,.18))}
+.tile-follower svg.tile-svg,.tile-follower svg.tile-square{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;display:block;overflow:visible}
+.tile-journey > svg.journey-layer{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
+.cta{position:relative;z-index:5;isolation:isolate;background:#151515}
+.cta::before{content:"";position:absolute;inset:0;background:#151515;z-index:0}
+.cta > .container{position:relative;z-index:2}
+@media(max-width:760px){.tile-follower{width:62px!important;height:76px!important}}
