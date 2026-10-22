@@ -22,12 +22,12 @@ if(journey&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  svg.appendChild(path);trail.appendChild(svg);
  const total=path.getTotalLength();
  const start=document.querySelector('.hero');
- const end=document.querySelector('#contact');
+ const end=document.querySelector('.cta') || document.querySelector('#contact');
  let scheduled=false;
  function update(){
   scheduled=false;
   const top=window.scrollY,vh=window.innerHeight,vw=window.innerWidth;
-  const begin=start?start.getBoundingClientRect().bottom+top-vh*.75:vh*.5;
+  const begin=start?start.getBoundingClientRect().bottom+top-vh*.5:vh*.5;
   const finish=end?end.getBoundingClientRect().top+top:document.documentElement.scrollHeight-vh;
   const p=Math.max(0,Math.min(1,(top+vh*.3-begin)/Math.max(1,finish-begin)));
   journey.classList.toggle('active',p>.005&&p<.997);
