@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Le Carré | Nicolas Magniez</title>
   <meta name="description" content="Couvreur à Toulouse : réparation, rénovation et entretien de toiture avec Nicolas Magniez.">
-  <link rel="stylesheet" href="style.css?v=20261022-2">
+  <link rel="stylesheet" href="style.css?v=20261022-3">
 </head>
 <body>
 <div class="tile-journey" aria-hidden="true">
@@ -22,14 +22,14 @@
   <div class="container nav">
     <a class="brand" href="index.html">LE CARRÉ<span>.</span></a>
     <nav class="navlinks">
-      <a href="#nicolas">Nicolas</a>
+      <a href="#nicolas">Nicolas Magniez</a>
       <a href="#prestations">Expertises</a>
       <a href="#realisations">Réalisations</a>
       <a href="#avis">Avis clients</a>
     </nav>
     <div class="navactions">
       <a class="btn secondary" href="#contact">Parlez-moi de votre projet</a>
-      <a class="btn phone" data-phone href="tel:+33647006159">06 47 00 61 59</a>
+      <a class="btn phone" data-reveal-phone href="#" role="button">Voir mon 06</a>
     </div>
   </div>
 </header>
@@ -45,7 +45,7 @@
   <div class="container hero-content">
     <div class="hero-copy">
       <h1>Le bon diagnostic, avant les grands travaux&nbsp;!</h1>
-      <p>Comprendre le problème, proposer la bonne intervention au bon moment et au bon prix.</p>
+      <div class="hero-expertises">Toiture <span>—</span> Charpente <span>—</span> Zinguerie <span>—</span> Isolation</div><p>Comprendre le problème et proposer la bonne intervention au bon prix.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#contact">Parlez-moi de votre projet</a>
         <a class="btn secondary" style="background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.2)" href="#realisations">Voir les réalisations</a>
@@ -57,9 +57,9 @@
 <section id="nicolas" class="section">
   <div class="container">
     <div class="portrait-card">
-      <img src="nicolas.webp" alt="Nicolas Magniez">
+      <img src="profil-image-type-personne-22-75-447.webp" onerror="this.onerror=null;this.src='nicolas.webp'" alt="Portrait de Nicolas Magniez">
       <div>
-        <div class="eyebrow">Nicolas Magniez</div>
+        <div class="eyebrow">Nicolas Magniez <span class="experience-pill">Plus de 20 ans d’expérience</span></div>
         <h2>Un couvreur qui privilégie le bon conseil.</h2>
         <p class="lead">Le Carré se différencie par une approche très relationnelle : prendre le temps d’écouter, expliquer simplement ce qui se passe sur la toiture et éviter de proposer des travaux trop lourds si une intervention ciblée peut suffire.</p>
         <p class="quote">« Quand une réparation suffit, pourquoi proposer une rénovation complète ? »</p>
@@ -129,7 +129,7 @@
       <article class="review"><div class="stars">★★★★★</div><p>« Est intervenu très rapidement pour une fuite dans notre maison et nous a donné énormément de conseils très utiles sans nous forcer à la surconsommation. »</p><strong>Clémence — extrait d’un avis Google</strong></article>
       <article class="review"><div class="stars">★★★★★</div><p>« Excellente expérience. Travail propre, soigné et réalisé dans les délais. Équipe sérieuse, agréable et de bon conseil. Je recommande sans hésitation. »</p><strong>Lillou — extrait d’un avis Google</strong></article>
     </div>
-    <div class="reviews-link"><a href="https://share.google/Vi1uRMYiUWTxgaMyL" target="_blank" rel="noopener">Voir la fiche Google et tous les avis</a></div>
+    <div class="reviews-link"><a href="https://share.google/Vi1uRMYiUWTxgaMyL" target="_blank" rel="noopener">Voir tous les avis Google</a></div>
   </div>
 </section>
 
@@ -139,30 +139,30 @@
       <div>
         <div class="eyebrow">Contact</div>
         <h2>Un projet ? Une question ? Je me tiens à votre disposition.</h2>
-        <p class="lead">Décrivez votre situation. Que ce soit pour une réparation, un entretien ou une rénovation, Nicolas reviendra vers vous pour faire le point.</p>
-        <p><strong>06 47 00 61 59</strong><br>nicolas.magniez@me.com</p>
+        <p class="lead">Décrivez votre situation. Que ce soit pour une réparation, un entretien ou une rénovation, Nicolas Magniez reviendra vers vous pour faire le point.</p>
+        <button class="btn secondary" type="button" data-reveal-phone>Voir mon 06</button>
       </div>
       <div class="contact-card">
         <h3>Décrivez-moi votre besoin</h3>
         <p>Le formulaire ouvre votre messagerie avec les informations préremplies.</p>
         <form class="form" data-lead>
-          <div class="row"><label>Votre besoin</label><select name="Besoin" required><option value="">Choisir…</option><option>Fuite / infiltration</option><option>Réparation toiture</option><option>Rénovation de toiture</option><option>Entretien / démoussage</option><option>Isolation / charpente / zinguerie</option></select></div>
+          <div class="row"><label>Votre besoin</label><select name="Besoin" required><option value="">Choisir…</option><option>Fuite / infiltration</option><option>Réparation toiture</option><option>Rénovation de toiture</option><option>Entretien / démoussage</option><option>Isolation / charpente / zinguerie</option><option>Autre</option></select></div>
           <div class="row"><label>Votre commune</label><input name="Commune" required placeholder="Ex. Tournefeuille"></div>
           <div class="row"><label>Votre nom</label><input name="Nom" required placeholder="Prénom et nom"></div>
           <div class="row"><label>Votre téléphone</label><input name="Téléphone" type="tel" required placeholder="06 …"></div>
           <div class="row"><label>Votre message</label><textarea name="Message" placeholder="Décrivez rapidement votre situation"></textarea></div>
           <label><input type="checkbox" name="consent" required> J’accepte d’être recontacté au sujet de ma demande.</label>
-          <button class="btn primary" type="submit">Préparer ma demande</button>
-          <small>Sur mobile, tu peux aussi envoyer un SMS directement.</small>
+          <button class="btn primary" type="submit">Demander un premier avis</button>
+          <small>Cette demande ouvre votre messagerie : vérifiez les informations puis envoyez l’email.</small>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta"><div class="container"><h2>Une toiture bien pensée, une maison protégée.</h2><a class="btn primary" href="#contact">Parlez-moi de votre projet</a></div></section>
-<footer class="footer"><div class="container"><span>© 2026 Le Carré — Nicolas Magniez</span><span>06 47 00 61 59 · nicolas.magniez@me.com</span><span>Mentions légales à compléter</span></div></footer>
+<section class="cta"><div class="container"><h2>Une toiture bien pensée, une maison protégée.</h2></div></section>
+<footer class="footer"><div class="container"><span>© 2026 Le Carré — Nicolas Magniez</span><span>Mentions légales à compléter</span></div></footer>
 <div class="mobile-bar"><div class="container"><a class="btn primary" data-sms href="#contact">Envoyer un SMS à Nicolas</a></div></div>
-<script src="app.js?v=20261022-2"></script>
+<script src="app.js?v=20261022-3"></script>
 </body>
 </html>
