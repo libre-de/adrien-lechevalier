@@ -23,7 +23,7 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const guide = journey.querySelector('.journey-guide');
   const total = guide.getTotalLength();
   const hero = document.querySelector('.hero');
-  const endTarget = document.querySelector('.cta') || document.querySelector('footer') || document.body;
+  const endTarget = document.querySelector('footer') || document.body;
   let raf = null;
 
   path.style.strokeDasharray = `${total}`;
