@@ -57,20 +57,24 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const finish = Math.max(start + 1, maxScroll);
     const progress = clamp((scrollTop - start + viewportH * 0.2) / Math.max(1, finish - start + viewportH * 0.2), 0, 1);
 
-    const point = guide.getPointAtLength(total * progress);
-    const lookAhead = guide.getPointAtLength(Math.min(total, total * Math.min(progress + 0.012, 1)));
+    // La trajectoire reste celle d'origine. Sa fin se stabilise sur le footer,
+    // sans déport artificiel à droite ni bascule de la tuile.
+    const travel = Math.min(progress, 0.92);
+    const point = guide.getPointAtLength(total * travel);
+    const lookAhead = guide.getPointAtLength(Math.min(total, total * (travel + 0.012)));
     const angle = Math.atan2(lookAhead.y - point.y, lookAhead.x - point.x) * 180 / Math.PI;
-    const uprightAngle = Math.max(-32, Math.min(32, angle - 90));
+    const uprightAngle = clamp(angle - 90, -32, 32);
 
     const footerRect = endTarget.getBoundingClientRect();
-    const footerX = window.innerWidth * (window.innerWidth < 760 ? 0.76 : 0.82);
-    const footerY = clamp(footerRect.top + Math.min(footerRect.height * 0.48, 72), 42, viewportH - 42);
-    const landing = clamp((progress - 0.84) / 0.16, 0, 1);
+    const landing = clamp((progress - 0.86) / 0.14, 0, 1);
     const eased = landing * landing * (3 - 2 * landing);
+    const footerX = window.innerWidth * 0.52;
+    const footerY = clamp(footerRect.top + Math.min(footerRect.height * 0.42, 64), 50, viewportH - 58);
     const x = (point.x / 1000) * window.innerWidth * (1 - eased) + footerX * eased;
     const y = (point.y / 1000) * viewportH * (1 - eased) + footerY * eased;
+    const finalAngle = uprightAngle * (1 - eased);
 
-    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${uprightAngle}deg)`;
+    follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${finalAngle}deg)`;
     path.style.strokeDashoffset = `${total * (1 - progress)}`;
 
     journey.classList.toggle('active', progress > 0.015 && progress <= 1);
