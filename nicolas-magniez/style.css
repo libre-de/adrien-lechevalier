@@ -68,7 +68,7 @@ img,video{display:block;max-width:100%}
 /* Tuile en motion design */
 .tile-journey{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .35s ease;overflow:hidden}
 .tile-journey.active{opacity:1}
-.tile-journey svg{position:absolute;inset:0;width:100%;height:100%}
+.tile-journey > .journey-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .journey-guide{fill:none;stroke:rgba(191,74,55,.10);stroke-width:2.4;stroke-dasharray:4 12;stroke-linecap:round}
 .journey-progress{fill:none;stroke:rgba(191,74,55,.28);stroke-width:3.5;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(191,74,55,.18))}
 .tile-follower{position:absolute;top:0;left:0;width:124px;height:92px;transform-origin:center center;will-change:transform;filter:drop-shadow(0 14px 20px rgba(74,28,16,.25))}
@@ -99,3 +99,11 @@ img,video{display:block;max-width:100%}
 @media (prefers-reduced-motion: reduce){
   .tile-journey{display:none}
 }
+
+/* Correctifs visuels V6 : proportions des tuiles et empilement */
+.tile-follower{width:116px;height:85px;z-index:2}
+.tile-follower svg.tile-svg,.tile-follower svg.tile-square{display:block;position:absolute;inset:0;width:100%;height:100%;max-width:none;overflow:visible}
+.tile-journey .journey-progress{stroke-width:2.7;stroke:rgba(181,76,52,.28)}
+.tile-journey .journey-guide{stroke:rgba(181,76,52,.075)}
+.hero-overlay{pointer-events:none}
+@media(max-width:760px){.tile-follower{width:76px;height:56px}}
