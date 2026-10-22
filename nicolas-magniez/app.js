@@ -30,7 +30,7 @@ if(journey&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const begin=start?start.getBoundingClientRect().bottom+top-vh*.5:vh*.5;
   const finish=end?end.getBoundingClientRect().top+top:document.documentElement.scrollHeight-vh;
   const p=Math.max(0,Math.min(1,(top+vh*.3-begin)/Math.max(1,finish-begin)));
-  journey.classList.toggle('active',p>.005&&p<.997);
+  journey.classList.toggle('active',p>.005&&p<=1);
   journey.classList.toggle('at-end',p>.88);
   const point=path.getPointAtLength(total*p);
   const x=vw*point.x/1000;
