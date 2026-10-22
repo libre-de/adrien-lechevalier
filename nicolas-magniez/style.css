@@ -117,3 +117,10 @@ img,video{display:block;max-width:100%}
 .cta::before{content:"";position:absolute;inset:0;background:#151515;z-index:1}
 .cta>.container{position:relative;z-index:2}
 .footer{position:relative;z-index:3;background:#fff}
+
+/* Tuile monobloc V7 : proportion verticale, jamais de morceaux disjoints */
+.tile-follower{width:90px!important;height:112px!important;transform-origin:center center;filter:drop-shadow(0 7px 10px rgba(77,33,23,.20))}
+.tile-follower svg.tile-svg,.tile-follower svg.tile-square{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block;overflow:visible}
+.tile-journey > svg.journey-layer{position:absolute!important;inset:0;width:100%;height:100%}
+.tile-journey.at-end .tile-follower svg.tile-square{transform:scale(.85)}
+@media(max-width:760px){.tile-follower{width:64px!important;height:80px!important}}
