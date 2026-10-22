@@ -64,11 +64,20 @@ img,video{display:block;max-width:100%}
 .cta{background:#151515;color:#fff;text-align:center;padding:60px 0;position:relative;overflow:hidden}.cta h2{font-size:clamp(2rem,4vw,3.6rem);margin:0 0 14px;letter-spacing:-.05em}
 .footer{padding:22px 0 94px;background:#fff;border-top:1px solid var(--line)}.footer .container{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#5a554f;font-size:.92rem}
 .mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;padding:10px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:60}.mobile-bar a{width:100%}
-/* Motion tile */
-.tile-motion{position:fixed;top:14vh;right:7vw;width:88px;height:122px;z-index:1;pointer-events:none;opacity:.72;transform:translate3d(0,0,0) rotate(8deg);will-change:transform,opacity,border-radius}
-.tile-motion::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#cf6955,#b54835);border-radius:18px 18px 8px 8px;box-shadow:0 18px 40px rgba(191,74,55,.20)}
-.tile-motion::after{content:'';position:absolute;left:38px;top:118px;width:4px;height:170px;background:linear-gradient(180deg,rgba(191,74,55,.25),rgba(191,74,55,0));border-radius:999px;transform-origin:top center}
-.tile-motion.is-square::before{border-radius:10px}.tile-motion.is-square{width:96px;height:96px}
+
+/* Tuile en motion design */
+.tile-journey{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .35s ease;overflow:hidden}
+.tile-journey.active{opacity:1}
+.tile-journey svg{position:absolute;inset:0;width:100%;height:100%}
+.journey-guide{fill:none;stroke:rgba(191,74,55,.10);stroke-width:2.4;stroke-dasharray:4 12;stroke-linecap:round}
+.journey-progress{fill:none;stroke:rgba(191,74,55,.28);stroke-width:3.5;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(191,74,55,.18))}
+.tile-follower{position:absolute;top:0;left:0;width:124px;height:92px;transform-origin:center center;will-change:transform;filter:drop-shadow(0 14px 20px rgba(74,28,16,.25))}
+.tile-follower .tile-svg,.tile-follower .tile-square{position:absolute;inset:0;width:100%;height:100%;transition:opacity .35s ease, transform .35s ease}
+.tile-follower .tile-square{opacity:0;transform:scale(.82)}
+.tile-journey.at-end .tile-follower .tile-svg{opacity:0;transform:scale(.84)}
+.tile-journey.at-end .tile-follower .tile-square{opacity:1;transform:scale(1)}
+#nicolas,#prestations,#realisations,#avis,#contact{position:relative;scroll-margin-top:84px}
+#nicolas>.container,#prestations>.container,#realisations>.container,#avis>.container,#contact>.container,.cta>.container,footer .container{position:relative;z-index:2}
 @media (max-width:1024px){
   .hero-content,.grid-2{grid-template-columns:1fr}
   .services,.reviews{grid-template-columns:1fr 1fr}
@@ -81,20 +90,12 @@ img,video{display:block;max-width:100%}
   .hero{min-height:auto}.hero-content{padding:44px 0 28px;gap:22px}.hero-copy{margin-top:0}.hero-copy h1{max-width:10ch}.hero-card{display:none}
   .portrait-card{grid-template-columns:1fr}.portrait-card img{height:300px}
   .services,.reviews,.gallery{grid-template-columns:1fr}.gallery{grid-template-rows:auto}.gallery .item,.gallery .item.large{height:250px}
-  .mobile-bar{display:block}.footer{padding-bottom:90px}.tile-motion{display:none}
+  .mobile-bar{display:block}.footer{padding-bottom:90px}.tile-follower{width:84px;height:62px}
 }
 
-/* Tuile de couverture terracotta, animée au défilement */
-.tile-motion{display:none!important}
-.tile-journey{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .25s;overflow:hidden}
-.tile-journey.active{opacity:1}
-.roof-tile{position:absolute;top:0;left:0;width:74px;height:103px;transform-origin:center;filter:drop-shadow(0 13px 11px #6b281c4a);will-change:transform}
-.roof-tile:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f3a07b 0%,#d66b4b 27%,#b84c34 65%,#913625 100%);clip-path:polygon(10% 0,90% 0,98% 77%,90% 92%,70% 100%,30% 100%,10% 92%,2% 77%);border-radius:15px 15px 22px 22px}
-.roof-tile:after{content:"";position:absolute;inset:6% 13%;border:2px solid #f5b59691;border-bottom:0;border-radius:14px 14px 35px 35px;clip-path:polygon(0 0,100% 0,100% 86%,0 86%)}
-.roof-tile span{position:absolute;top:7%;left:47%;height:85%;width:3px;background:#8f362665;border-radius:4px}
-.tile-trail{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
-
-.tile-journey.at-end .roof-tile:before{clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border-radius:8px}
-.tile-journey.at-end .roof-tile{height:74px}
-@media(max-width:760px){.roof-tile{width:48px;height:67px}.tile-journey.at-end .roof-tile{height:48px}}
-@media(prefers-reduced-motion:reduce){.tile-journey{display:none}}
+@media (max-width:760px){
+  .journey-guide,.journey-progress{stroke-width:2}
+}
+@media (prefers-reduced-motion: reduce){
+  .tile-journey{display:none}
+}

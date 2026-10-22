@@ -8,7 +8,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="tile-journey" aria-hidden="true"><div class="tile-trail"></div><div class="roof-tile"><span></span></div></div>
+<div class="tile-journey" aria-hidden="true">
+  <svg class="journey-layer" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+    <path class="journey-guide" d="M770 115 C875 215 155 250 205 385 S860 520 790 640 S145 785 235 885 S640 942 505 972" />
+    <path class="journey-progress" d="M770 115 C875 215 155 250 205 385 S860 520 790 640 S145 785 235 885 S640 942 505 972" />
+  </svg>
+  <div class="tile-follower">
+    <svg class="tile-svg" viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tileTopGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f0a177"/>
+          <stop offset="55%" stop-color="#d97855"/>
+          <stop offset="100%" stop-color="#b24b35"/>
+        </linearGradient>
+        <linearGradient id="tileSideGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#c86347"/>
+          <stop offset="100%" stop-color="#91402c"/>
+        </linearGradient>
+        <linearGradient id="tileFrontGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f5ae86"/>
+          <stop offset="100%" stop-color="#ba573b"/>
+        </linearGradient>
+      </defs>
+      <path d="M40 128 L185 50 Q214 35 235 44 L240 61 L104 126 Q92 131 81 127 L40 128 Z" fill="url(#tileSideGrad)" stroke="#6d3225" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M27 114 Q48 65 101 50 L196 19 Q230 8 246 31 Q255 44 247 59 L114 118 Q97 126 80 118 Q68 111 59 97 Q44 74 22 79 L27 114 Z" fill="url(#tileTopGrad)" stroke="#6d3225" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M17 108 Q36 104 49 90 Q61 76 79 72 Q110 64 131 84 Q142 94 149 109 Q155 123 169 130 Q181 135 198 134 L205 160 Q182 164 161 158 Q142 153 129 140 Q112 122 83 120 Q63 118 49 129 Q36 139 20 140 L17 108 Z" fill="url(#tileFrontGrad)" stroke="#6d3225" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M75 55 Q92 39 121 33" fill="none" stroke="#f7c0a0" stroke-width="7" stroke-linecap="round" opacity=".75"/>
+      <path d="M155 39 Q186 30 214 33" fill="none" stroke="#f7c0a0" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+      <path d="M65 90 Q83 81 96 93" fill="none" stroke="#9d4732" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+    </svg>
+    <svg class="tile-square" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="squareGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#eb9872"/>
+          <stop offset="100%" stop-color="#b84c35"/>
+        </linearGradient>
+      </defs>
+      <rect x="10" y="10" width="90" height="90" rx="16" fill="url(#squareGrad)" stroke="#6d3225" stroke-width="5"/>
+      <path d="M24 70 Q55 26 87 70" fill="none" stroke="#6d3225" stroke-width="8" stroke-linecap="round"/>
+      <path d="M28 49 Q55 23 82 49" fill="none" stroke="#f7c0a0" stroke-width="6" stroke-linecap="round" opacity=".6"/>
+    </svg>
+  </div>
+</div>
 <header class="header">
   <div class="container nav">
     <a class="brand" href="index.html">LE CARRÉ<span>.</span></a>
@@ -27,9 +68,9 @@
 
 <section class="hero simple">
   <div class="hero-media">
-    <video autoplay muted loop playsinline poster="hero-poster.jpg">
-      <source src="toiture-hero.mp4" type="video/mp4">
-      <img src="hero-poster.jpg" alt="Toiture en tuiles vues depuis le dessus">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+      <source src="assets/toiture-hero.mp4" type="video/mp4">
+      <img src="assets/hero-poster.jpg" alt="Toiture en tuiles vues depuis le dessus">
     </video>
   </div>
   <div class="hero-overlay"></div>
@@ -48,7 +89,7 @@
 <section id="nicolas" class="section">
   <div class="container">
     <div class="portrait-card">
-      <img src="nicolas.webp" alt="Nicolas Magniez">
+      <img src="assets/nicolas.webp" alt="Nicolas Magniez">
       <div>
         <div class="eyebrow">Nicolas Magniez</div>
         <h2>Un couvreur qui privilégie le bon conseil.</h2>
@@ -70,7 +111,7 @@
     <h2>À chaque toiture, la bonne intervention.</h2>
     <div class="services">
       <article class="service-card">
-        <img src="toiture-mousse-2.jpg" alt="Toiture ancienne avec traces d'usure et besoin de réparation">
+        <img src="assets/toiture-mousse-2.jpg" alt="Toiture ancienne avec traces d'usure et besoin de réparation">
         <div class="content">
           <div class="kicker">Réparer</div>
           <h3>Fuites et réparations</h3>
@@ -78,7 +119,7 @@
         </div>
       </article>
       <article class="service-card">
-        <img src="vue-toulouse-toit.jpg" alt="Vue sur les toits de Toulouse">
+        <img src="assets/vue-toulouse-toit.jpg" alt="Vue sur les toits de Toulouse">
         <div class="content">
           <div class="kicker">Rénover</div>
           <h3>Réfection de couverture</h3>
@@ -86,7 +127,7 @@
         </div>
       </article>
       <article class="service-card">
-        <img src="isolation-combles.jpg" alt="Isolation des combles sous toiture">
+        <img src="assets/isolation-combles.jpg" alt="Isolation des combles sous toiture">
         <div class="content">
           <div class="kicker">Préserver</div>
           <h3>Entretien, isolation et prévention</h3>
@@ -102,11 +143,11 @@
     <div class="eyebrow">Réalisations</div>
     <h2>Des photos réelles pour se projeter.</h2>
     <div class="gallery">
-      <div class="item large"><img src="entretien-nettoyage.jpg" alt="Intervention d'entretien sur une toiture à Toulouse"><div class="caption">Intervention d’entretien et de remise en état</div></div>
-      <div class="item"><img src="toiture-neuve-vallee.jpg" alt="Toiture rénovée avec tuiles neuves"><div class="caption">Toiture rénovée, finitions propres</div></div>
-      <div class="item"><img src="vue-toulouse-toit.jpg" alt="Vue de Toulouse depuis une toiture"><div class="caption">Intervention en centre-ville</div></div>
-      <div class="item"><img src="toit-cour.jpg" alt="Intervention sur toiture au-dessus d'une cour intérieure"><div class="caption">Inspection et diagnostic</div></div>
-      <div class="item"><img src="toiture-ville.jpg" alt="Toiture urbaine avec tuiles traditionnelles"><div class="caption">Toiture traditionnelle en milieu urbain</div></div>
+      <div class="item large"><img src="assets/entretien-nettoyage.jpg" alt="Intervention d'entretien sur une toiture à Toulouse"><div class="caption">Intervention d’entretien et de remise en état</div></div>
+      <div class="item"><img src="assets/toiture-neuve-vallee.jpg" alt="Toiture rénovée avec tuiles neuves"><div class="caption">Toiture rénovée, finitions propres</div></div>
+      <div class="item"><img src="assets/vue-toulouse-toit.jpg" alt="Vue de Toulouse depuis une toiture"><div class="caption">Intervention en centre-ville</div></div>
+      <div class="item"><img src="assets/toit-cour.jpg" alt="Intervention sur toiture au-dessus d'une cour intérieure"><div class="caption">Inspection et diagnostic</div></div>
+      <div class="item"><img src="assets/toiture-ville.jpg" alt="Toiture urbaine avec tuiles traditionnelles"><div class="caption">Toiture traditionnelle en milieu urbain</div></div>
     </div>
   </div>
 </section>
