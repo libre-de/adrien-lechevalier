@@ -190,3 +190,8 @@ img,video{display:block;max-width:100%}
 
 /* Les contenus restent lisibles devant la tuile ; ses tracés sont visibles derrière. */
 .section > .container{position:relative;z-index:2}
+
+/* Image de couverture immédiate, vidéo révélée à sa première frame prête. */
+.hero-media{background:#40382f url('hero-poster.jpg') center center / cover no-repeat}
+.hero-media video{opacity:0;transition:opacity .16s ease}
+.hero-media.video-ready video{opacity:1}
