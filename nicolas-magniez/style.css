@@ -108,3 +108,9 @@ img,video{display:block;max-width:100%}
   .mobile-bar{display:block}
   .footer{padding-bottom:90px}
 }
+
+/* Photos authentiques Le Carré, styles ajustés */
+.hero-video{object-fit:cover}
+.split-image img{object-fit:cover;object-position:center 38%}
+#realisations .tile img{object-fit:cover}
+@media(max-width:600px){.split-image img{object-position:center 30%}}
