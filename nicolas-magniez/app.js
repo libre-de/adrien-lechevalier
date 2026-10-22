@@ -53,22 +53,28 @@ if (journey && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const scrollTop = window.scrollY || window.pageYOffset;
     const viewportH = window.innerHeight;
     const start = hero ? hero.offsetTop + hero.offsetHeight * 0.7 : viewportH * 0.6;
-    const finish = endTarget ? endTarget.getBoundingClientRect().top + scrollTop : (document.documentElement.scrollHeight - viewportH);
-    const progress = clamp((scrollTop + viewportH * 0.35 - start) / Math.max(1, finish - start), 0, 1);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewportH);
+    const finish = Math.max(start + 1, maxScroll);
+    const progress = clamp((scrollTop - start + viewportH * 0.2) / Math.max(1, finish - start + viewportH * 0.2), 0, 1);
 
     const point = guide.getPointAtLength(total * progress);
     const lookAhead = guide.getPointAtLength(Math.min(total, total * Math.min(progress + 0.012, 1)));
     const angle = Math.atan2(lookAhead.y - point.y, lookAhead.x - point.x) * 180 / Math.PI;
     const uprightAngle = Math.max(-32, Math.min(32, angle - 90));
 
-    const x = (point.x / 1000) * window.innerWidth;
-    const y = (point.y / 1000) * window.innerHeight;
+    const footerRect = endTarget.getBoundingClientRect();
+    const footerX = window.innerWidth * (window.innerWidth < 760 ? 0.76 : 0.82);
+    const footerY = clamp(footerRect.top + Math.min(footerRect.height * 0.48, 72), 42, viewportH - 42);
+    const landing = clamp((progress - 0.84) / 0.16, 0, 1);
+    const eased = landing * landing * (3 - 2 * landing);
+    const x = (point.x / 1000) * window.innerWidth * (1 - eased) + footerX * eased;
+    const y = (point.y / 1000) * viewportH * (1 - eased) + footerY * eased;
 
     follower.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${uprightAngle}deg)`;
     path.style.strokeDashoffset = `${total * (1 - progress)}`;
 
     journey.classList.toggle('active', progress > 0.015 && progress <= 1);
-    journey.classList.toggle('at-end', progress > 0.88);
+    journey.classList.toggle('at-end', progress >= 0.999);
   }
 
   function requestUpdate() {
