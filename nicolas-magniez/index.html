@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="tile-motion" aria-hidden="true"></div>
 <header class="header">
   <div class="container nav">
     <a class="brand" href="index.html">LE CARRÉ<span>.</span></a>
@@ -24,55 +25,39 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero simple">
   <div class="hero-media">
-    <video autoplay muted loop playsinline poster="hero-poster.jpg">
-      <source src="toiture-hero.mp4" type="video/mp4">
-      <img src="hero-poster.jpg" alt="Toiture en tuiles vues depuis le dessus">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+      <source src="assets/toiture-hero.mp4" type="video/mp4">
+      <img src="assets/hero-poster.jpg" alt="Toiture en tuiles vues depuis le dessus">
     </video>
   </div>
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-copy">
       <h1>Le bon diagnostic, avant les grands travaux&nbsp;!</h1>
-      <p>Je suis Nicolas Magniez. J’interviens sur les toitures avec une approche simple : comprendre le problème, l’expliquer clairement et proposer la bonne intervention, au bon moment.</p>
-      <div class="navactions">
+      <p>Comprendre le problème, proposer la bonne intervention au bon moment et au bon prix.</p>
+      <div class="hero-cta">
         <a class="btn primary" href="#contact">Parlez-moi de votre projet</a>
         <a class="btn secondary" style="background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.2)" href="#realisations">Voir les réalisations</a>
       </div>
-      <div class="hero-points">
-        <span>Réparation quand elle est possible</span>
-        <span>Conseils clairs</span>
-        <span>Travail soigné</span>
-      </div>
     </div>
-    <aside class="hero-card">
-      <h3>Un interlocuteur identifié</h3>
-      <p>Une relation directe, des échanges simples et une vraie attention portée à votre toiture.</p>
-      <img src="nicolas.webp" alt="Portrait de Nicolas Magniez" style="width:100%;height:260px;object-fit:cover;border-radius:18px;margin:8px 0 14px">
-      <div class="badges">
-        <span>Réparation</span>
-        <span>Rénovation</span>
-        <span>Entretien</span>
-        <span>Isolation</span>
-      </div>
-    </aside>
   </div>
 </section>
 
 <section id="nicolas" class="section">
   <div class="container">
     <div class="portrait-card">
-      <img src="nicolas.webp" alt="Nicolas Magniez">
+      <img src="assets/nicolas.webp" alt="Nicolas Magniez">
       <div>
         <div class="eyebrow">Nicolas Magniez</div>
-        <h2>Un couvreur qui privilégie le conseil juste.</h2>
+        <h2>Un couvreur qui privilégie le bon conseil.</h2>
         <p class="lead">Le Carré se différencie par une approche très relationnelle : prendre le temps d’écouter, expliquer simplement ce qui se passe sur la toiture et éviter de proposer des travaux trop lourds si une intervention ciblée peut suffire.</p>
         <p class="quote">« Quand une réparation suffit, pourquoi proposer une rénovation complète ? »</p>
         <div class="checks">
-          <div class="check"><i>✓</i><div><strong>Une relation de confiance</strong><br><span class="lead" style="font-size:1rem">Des échanges directs et un interlocuteur clairement identifié.</span></div></div>
+          <div class="check"><i>✓</i><div><strong>Une relation de confiance</strong><br><span class="lead" style="font-size:1rem">Des échanges directs et un accompagnement clair.</span></div></div>
           <div class="check"><i>✓</i><div><strong>Des solutions proportionnées</strong><br><span class="lead" style="font-size:1rem">Réparer, rénover ou entretenir selon le besoin réel.</span></div></div>
-          <div class="check"><i>✓</i><div><strong>Une exécution sérieuse</strong><br><span class="lead" style="font-size:1rem">Soin du chantier, respect de la maison et attention portée aux finitions.</span></div></div>
+          <div class="check"><i>✓</i><div><strong>Une exécution sérieuse</strong><br><span class="lead" style="font-size:1rem">Soin du chantier, respect de la maison et attention aux finitions.</span></div></div>
         </div>
       </div>
     </div>
@@ -83,10 +68,9 @@
   <div class="container">
     <div class="eyebrow">Expertises</div>
     <h2>À chaque toiture, la bonne intervention.</h2>
-    <p class="lead">Voici les trois grands types de besoins que Nicolas traite le plus souvent.</p>
     <div class="services">
       <article class="service-card">
-        <img src="toiture-mousse-2.jpg" alt="Toiture ancienne avec traces d'usure et besoin de réparation">
+        <img src="assets/toiture-mousse-2.jpg" alt="Toiture ancienne avec traces d'usure et besoin de réparation">
         <div class="content">
           <div class="kicker">Réparer</div>
           <h3>Fuites et réparations</h3>
@@ -94,7 +78,7 @@
         </div>
       </article>
       <article class="service-card">
-        <img src="renovation-ouverture.jpg" alt="Travaux de rénovation de toiture et ouverture en cours">
+        <img src="assets/vue-toulouse-toit.jpg" alt="Vue sur les toits de Toulouse">
         <div class="content">
           <div class="kicker">Rénover</div>
           <h3>Réfection de couverture</h3>
@@ -102,7 +86,7 @@
         </div>
       </article>
       <article class="service-card">
-        <img src="isolation-combles.jpg" alt="Isolation des combles sous toiture">
+        <img src="assets/isolation-combles.jpg" alt="Isolation des combles sous toiture">
         <div class="content">
           <div class="kicker">Préserver</div>
           <h3>Entretien, isolation et prévention</h3>
@@ -117,13 +101,12 @@
   <div class="container">
     <div class="eyebrow">Réalisations</div>
     <h2>Des photos réelles pour se projeter.</h2>
-    <p class="lead">Quelques images de chantier et de réalisations menées par Nicolas.</p>
     <div class="gallery">
-      <div class="item large"><img src="entretien-nettoyage.jpg" alt="Intervention d'entretien sur une toiture à Toulouse"><div class="caption">Intervention d’entretien et de remise en état sur toiture</div></div>
-      <div class="item"><img src="toiture-neuve-vallee.jpg" alt="Toiture rénovée avec tuiles neuves"><div class="caption">Toiture rénovée, finitions propres</div></div>
-      <div class="item"><img src="vue-toulouse-toit.jpg" alt="Vue de Toulouse depuis une toiture"><div class="caption">Intervention en centre-ville</div></div>
-      <div class="item"><img src="toit-cour.jpg" alt="Intervention sur toiture au-dessus d'une cour intérieure"><div class="caption">Inspection et diagnostic sur toiture</div></div>
-      <div class="item"><img src="toiture-ville.jpg" alt="Toiture urbaine avec tuiles traditionnelles"><div class="caption">Toiture traditionnelle en milieu urbain</div></div>
+      <div class="item large"><img src="assets/entretien-nettoyage.jpg" alt="Intervention d'entretien sur une toiture à Toulouse"><div class="caption">Intervention d’entretien et de remise en état</div></div>
+      <div class="item"><img src="assets/toiture-neuve-vallee.jpg" alt="Toiture rénovée avec tuiles neuves"><div class="caption">Toiture rénovée, finitions propres</div></div>
+      <div class="item"><img src="assets/vue-toulouse-toit.jpg" alt="Vue de Toulouse depuis une toiture"><div class="caption">Intervention en centre-ville</div></div>
+      <div class="item"><img src="assets/toit-cour.jpg" alt="Intervention sur toiture au-dessus d'une cour intérieure"><div class="caption">Inspection et diagnostic</div></div>
+      <div class="item"><img src="assets/toiture-ville.jpg" alt="Toiture urbaine avec tuiles traditionnelles"><div class="caption">Toiture traditionnelle en milieu urbain</div></div>
     </div>
   </div>
 </section>
@@ -137,30 +120,33 @@
       <article class="review"><div class="stars">★★★★★</div><p>« Est intervenu très rapidement pour une fuite dans notre maison et nous a donné énormément de conseils très utiles sans nous forcer à la surconsommation. »</p><strong>Clémence — extrait d’un avis Google</strong></article>
       <article class="review"><div class="stars">★★★★★</div><p>« Excellente expérience. Travail propre, soigné et réalisé dans les délais. Équipe sérieuse, agréable et de bon conseil. Je recommande sans hésitation. »</p><strong>Lillou — extrait d’un avis Google</strong></article>
     </div>
+    <div class="reviews-link"><a href="https://share.google/Vi1uRMYiUWTxgaMyL" target="_blank" rel="noopener">Voir la fiche Google et tous les avis</a></div>
   </div>
 </section>
 
 <section id="contact" class="section">
-  <div class="container grid-2">
-    <div>
-      <div class="eyebrow">Contact</div>
-      <h2>Un projet ? Une question ? Je me tiens à votre disposition.</h2>
-      <p class="lead">Décrivez votre situation. Que ce soit pour une réparation, un entretien ou une rénovation, Nicolas reviendra vers vous pour faire le point.</p>
-      <p><strong>06 47 00 61 59</strong><br>nicolas.magniez@me.com</p>
-    </div>
-    <div class="contact-card">
-      <h3>Décrivez-moi votre besoin</h3>
-      <p>Le formulaire ouvre votre messagerie avec les informations préremplies.</p>
-      <form class="form" data-lead>
-        <div class="row"><label>Votre besoin</label><select name="Besoin" required><option value="">Choisir…</option><option>Fuite / infiltration</option><option>Réparation toiture</option><option>Rénovation de toiture</option><option>Entretien / démoussage</option><option>Isolation / charpente / zinguerie</option></select></div>
-        <div class="row"><label>Votre commune</label><input name="Commune" required placeholder="Ex. Tournefeuille"></div>
-        <div class="row"><label>Votre nom</label><input name="Nom" required placeholder="Prénom et nom"></div>
-        <div class="row"><label>Votre téléphone</label><input name="Téléphone" type="tel" required placeholder="06 …"></div>
-        <div class="row"><label>Votre message</label><textarea name="Message" placeholder="Décrivez rapidement votre situation"></textarea></div>
-        <label><input type="checkbox" name="consent" required> J’accepte d’être recontacté au sujet de ma demande.</label>
-        <button class="btn primary" type="submit">Préparer ma demande</button>
-        <small>Sur mobile, tu peux aussi envoyer un SMS directement.</small>
-      </form>
+  <div class="container contact-wrap">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Un projet ? Une question ? Je me tiens à votre disposition.</h2>
+        <p class="lead">Décrivez votre situation. Que ce soit pour une réparation, un entretien ou une rénovation, Nicolas reviendra vers vous pour faire le point.</p>
+        <p><strong>06 47 00 61 59</strong><br>nicolas.magniez@me.com</p>
+      </div>
+      <div class="contact-card">
+        <h3>Décrivez-moi votre besoin</h3>
+        <p>Le formulaire ouvre votre messagerie avec les informations préremplies.</p>
+        <form class="form" data-lead>
+          <div class="row"><label>Votre besoin</label><select name="Besoin" required><option value="">Choisir…</option><option>Fuite / infiltration</option><option>Réparation toiture</option><option>Rénovation de toiture</option><option>Entretien / démoussage</option><option>Isolation / charpente / zinguerie</option></select></div>
+          <div class="row"><label>Votre commune</label><input name="Commune" required placeholder="Ex. Tournefeuille"></div>
+          <div class="row"><label>Votre nom</label><input name="Nom" required placeholder="Prénom et nom"></div>
+          <div class="row"><label>Votre téléphone</label><input name="Téléphone" type="tel" required placeholder="06 …"></div>
+          <div class="row"><label>Votre message</label><textarea name="Message" placeholder="Décrivez rapidement votre situation"></textarea></div>
+          <label><input type="checkbox" name="consent" required> J’accepte d’être recontacté au sujet de ma demande.</label>
+          <button class="btn primary" type="submit">Préparer ma demande</button>
+          <small>Sur mobile, tu peux aussi envoyer un SMS directement.</small>
+        </form>
+      </div>
     </div>
   </div>
 </section>
