@@ -163,10 +163,10 @@ img,video{display:block;max-width:100%}
 /* Calques : la tuile circule derrière les sections, le bandeau noir,
    puis ressort uniquement sur le pied de page blanc. */
 .tile-journey{z-index:1}
-.hero,.section{position:relative;z-index:2}
-.section{background:var(--bg)}
+.hero{position:relative;z-index:2}
+.section{position:relative;z-index:auto;background:transparent}
 .section.alt{background:var(--surface-soft)}
-.cta{z-index:3}
+.cta{z-index:5}
 .footer{position:relative;z-index:0;background:#fff}
 .tile-square{display:none!important}
 .tile-journey.at-end .tile-follower img.tile-svg{opacity:1!important;transform:none!important}
@@ -187,3 +187,6 @@ img,video{display:block;max-width:100%}
   .navactions .phone{padding:10px 9px}
   .hero-cta .btn{width:100%}
 }
+
+/* Les contenus restent lisibles devant la tuile ; ses tracés sont visibles derrière. */
+.section > .container{position:relative;z-index:2}
