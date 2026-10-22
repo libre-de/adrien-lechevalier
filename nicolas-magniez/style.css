@@ -158,3 +158,10 @@ img,video{display:block;max-width:100%}
 .tile-follower img.tile-svg{object-fit:contain}
 @media(max-width:1024px){.hero-content{padding-block:48px}.hero{min-height:calc(100dvh - 74px)}}
 @media(max-width:760px){.hero{min-height:calc(100svh - 74px);min-height:calc(100dvh - 74px)}.hero-content{padding-block:36px;align-content:center}.hero-copy h1{max-width:13ch}.hero-expertises{font-size:.82rem}.experience-pill{display:table;margin:8px 0 0}.navactions .phone{white-space:nowrap;font-size:.84rem;padding-inline:10px}}
+
+/* Fin de parcours : la vraie tuile reste au-dessus du footer blanc ; le panneau noir reste devant. */
+.tile-journey{z-index:4}
+.cta{z-index:5}
+.footer{z-index:3}
+.tile-square,.tile-journey.at-end .tile-square{display:none!important}
+.tile-journey.at-end .tile-follower img.tile-svg{opacity:1!important;transform:none!important}
