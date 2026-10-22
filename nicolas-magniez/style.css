@@ -83,3 +83,18 @@ img,video{display:block;max-width:100%}
   .services,.reviews,.gallery{grid-template-columns:1fr}.gallery{grid-template-rows:auto}.gallery .item,.gallery .item.large{height:250px}
   .mobile-bar{display:block}.footer{padding-bottom:90px}.tile-motion{display:none}
 }
+
+/* Tuile de couverture terracotta, animée au défilement */
+.tile-motion{display:none!important}
+.tile-journey{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .25s;overflow:hidden}
+.tile-journey.active{opacity:1}
+.roof-tile{position:absolute;top:0;left:0;width:74px;height:103px;transform-origin:center;filter:drop-shadow(0 13px 11px #6b281c4a);will-change:transform}
+.roof-tile:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f3a07b 0%,#d66b4b 27%,#b84c34 65%,#913625 100%);clip-path:polygon(10% 0,90% 0,98% 77%,90% 92%,70% 100%,30% 100%,10% 92%,2% 77%);border-radius:15px 15px 22px 22px}
+.roof-tile:after{content:"";position:absolute;inset:6% 13%;border:2px solid #f5b59691;border-bottom:0;border-radius:14px 14px 35px 35px;clip-path:polygon(0 0,100% 0,100% 86%,0 86%)}
+.roof-tile span{position:absolute;top:7%;left:47%;height:85%;width:3px;background:#8f362665;border-radius:4px}
+.tile-trail{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.tile-trail:after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;opacity:.22;background:linear-gradient(90deg,transparent 47%,#b7533c 50%,transparent 53%);mask-image:linear-gradient(to bottom,transparent 0%,black 50%,transparent 100%)}
+.tile-journey.at-end .roof-tile:before{clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border-radius:8px}
+.tile-journey.at-end .roof-tile{height:74px}
+@media(max-width:760px){.roof-tile{width:48px;height:67px}.tile-journey.at-end .roof-tile{height:48px}}
+@media(prefers-reduced-motion:reduce){.tile-journey{display:none}}
