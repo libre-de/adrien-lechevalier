@@ -9,6 +9,18 @@ document.querySelectorAll('form[data-lead]').forEach(f=>f.addEventListener('subm
 const journey=document.querySelector('.tile-journey');
 if(journey&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
  const tile=journey.querySelector('.roof-tile');
+ const trail=journey.querySelector('.tile-trail');
+ const svgNS='http://www.w3.org/2000/svg';
+ const svg=document.createElementNS(svgNS,'svg');
+ svg.setAttribute('viewBox','0 0 1000 1000');
+ svg.setAttribute('preserveAspectRatio','none');
+ svg.setAttribute('width','100%');svg.setAttribute('height','100%');
+ const path=document.createElementNS(svgNS,'path');
+ path.setAttribute('d','M810 150 C820 260 180 260 190 370 S810 490 800 590 S180 700 190 800 S660 850 510 900');
+ path.setAttribute('fill','none');path.setAttribute('stroke','rgba(184,76,52,.28)');
+ path.setAttribute('stroke-width','2.5');path.setAttribute('stroke-dasharray','5 9');
+ svg.appendChild(path);trail.appendChild(svg);
+ const total=path.getTotalLength();
  const start=document.querySelector('.hero');
  const end=document.querySelector('#contact');
  let scheduled=false;
@@ -20,9 +32,12 @@ if(journey&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const p=Math.max(0,Math.min(1,(top+vh*.3-begin)/Math.max(1,finish-begin)));
   journey.classList.toggle('active',p>.005&&p<.997);
   journey.classList.toggle('at-end',p>.88);
-  const x=vw*(.5+.32*Math.cos(4*Math.PI*p));
-  const y=vh*(.15+.7*p);
-  const angle=18*Math.sin(4*Math.PI*p);
+  const point=path.getPointAtLength(total*p);
+  const x=vw*point.x/1000;
+  const y=vh*point.y/1000;
+  const angle=14*Math.sin(4*Math.PI*p);
+  path.style.strokeDasharray=(total*p)+' '+total;
+  path.style.strokeDashoffset='0';
   tile.style.transform='translate3d('+(x-tile.offsetWidth/2)+'px,'+(y-tile.offsetHeight/2)+'px,0) rotate('+angle+'deg)';
  }
  function request(){if(!scheduled){scheduled=true;requestAnimationFrame(update)}}
