@@ -133,3 +133,9 @@ img,video{display:block;max-width:100%}
 .cta::before{content:"";position:absolute;inset:0;background:#151515;z-index:0}
 .cta > .container{position:relative;z-index:2}
 @media(max-width:760px){.tile-follower{width:62px!important;height:76px!important}}
+
+/* Tuile utilisateur conservée telle quelle : 2(1).png */
+.tile-follower{width:128px!important;height:104px!important;filter:drop-shadow(0 8px 12px rgba(55,27,18,.16))}
+.tile-follower img.tile-svg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:contain;display:block;transition:opacity .35s ease,transform .35s ease}
+.tile-follower svg.tile-square{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
+@media(max-width:760px){.tile-follower{width:88px!important;height:72px!important}}
