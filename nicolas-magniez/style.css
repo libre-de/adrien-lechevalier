@@ -139,3 +139,22 @@ img,video{display:block;max-width:100%}
 .tile-follower img.tile-svg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:contain;display:block;transition:opacity .35s ease,transform .35s ease}
 .tile-follower svg.tile-square{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
 @media(max-width:760px){.tile-follower{width:88px!important;height:72px!important}}
+
+/* Raffinements octobre : première vue immersive et hiérarchie */
+.hero{min-height:calc(100svh - 74px);min-height:calc(100dvh - 74px);align-items:center}
+.hero-content{align-items:center;padding-block:clamp(45px,6vh,90px)}
+.hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.23) 55%,rgba(0,0,0,.12) 100%)}
+.hero-expertises{color:#fff;font-size:clamp(.86rem,1.4vw,1.05rem);font-weight:700;letter-spacing:.012em;line-height:1.6;margin:12px 0 18px}
+.hero-expertises span{color:#e8a28e;margin:0 .25em}
+.navlinks{margin-left:auto}
+.experience-pill{display:inline-block;margin-left:12px;padding:5px 11px;background:#fde8e2;color:#963c2b;border-radius:999px;letter-spacing:0;font-size:.81rem;text-transform:none}
+.service-card:has(img[src="vue-toulouse-toit.jpg"]) img{object-position:center 76%}
+.form,.form input,.form textarea,.form select,.contact-card{font-family:Inter,system-ui,-apple-system,sans-serif}
+.form input,.form select,.form textarea{font-size:1rem;font-weight:450;line-height:1.5}
+.form label{font-weight:600;letter-spacing:0}
+.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:2px solid #bf4a37;outline-offset:2px}
+.cta{padding-block:54px}
+.cta h2{margin-bottom:0}
+.tile-follower img.tile-svg{object-fit:contain}
+@media(max-width:1024px){.hero-content{padding-block:48px}.hero{min-height:calc(100dvh - 74px)}}
+@media(max-width:760px){.hero{min-height:calc(100svh - 74px);min-height:calc(100dvh - 74px)}.hero-content{padding-block:36px;align-content:center}.hero-copy h1{max-width:13ch}.hero-expertises{font-size:.82rem}.experience-pill{display:table;margin:8px 0 0}.navactions .phone{white-space:nowrap;font-size:.84rem;padding-inline:10px}}
