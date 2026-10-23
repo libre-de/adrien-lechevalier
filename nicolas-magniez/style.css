@@ -208,3 +208,31 @@ img,video{display:block;max-width:100%}
 
 /* Cadrage plus bas pour voir davantage la toiture au premier plan. */
 .gallery .item img.gallery-city-roof{object-position:center 82%}
+
+/* SEO/responsive : sans modifier la charte visuelle */
+.mobile-menu-toggle{display:none}
+.form-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+.form-feedback{font-size:.94rem;line-height:1.45;color:#53463b;margin:0}
+.form button:disabled{opacity:.65;cursor:wait}
+@media(max-width:1100px){
+  .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;margin-left:auto;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--text);font:600 .92rem Inter,system-ui,sans-serif;cursor:pointer}
+  .navlinks{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:14px 20px;z-index:70;flex-direction:column;gap:0;align-items:stretch;margin-left:0}
+  .navlinks.is-open{display:flex}
+  .navlinks a{padding:12px 6px}
+  .nav{position:relative}
+}
+@media(max-width:760px){
+  .tile-journey{display:none!important}
+  .nav{gap:8px}
+  .mobile-menu-toggle{padding:10px}
+  .hero-title-secondline{display:block}
+  .hero-copy h1{max-width:none;font-size:clamp(2.2rem,10vw,3.5rem)}
+  .hero-cta{gap:8px}
+  .hero-cta .btn{flex:1 1 auto}
+  .footer .container{gap:10px}
+}
+@media(max-width:380px){
+  .brand{font-size:1.03rem}
+  .nav .btn.phone{font-size:.72rem;padding:10px 7px}
+  .mobile-menu-toggle{font-size:.8rem;padding:9px 7px}
+}
