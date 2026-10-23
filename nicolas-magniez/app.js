@@ -3,8 +3,21 @@ document.querySelectorAll('.hero-media video').forEach(video => {
   const showVideo = () => video.closest('.hero-media')?.classList.add('video-ready');
   if (video.readyState >= 2) showVideo();
   else video.addEventListener('loadeddata', showVideo, {once:true});
-  const play = video.play();
-  if (play && typeof play.catch === 'function') play.catch(() => {});
+  const startPlayback = () => {
+    const play = video.play();
+    if (play && typeof play.catch === 'function') play.catch(() => {});
+  };
+  // Sur mobile : l'affiche apparaît d'abord, le téléchargement vidéo attend le chargement.
+  if (window.matchMedia('(max-width: 760px)').matches) {
+    video.autoplay = false;
+    video.preload = 'none';
+    const schedule = () => {
+      if ('requestIdleCallback' in window) window.requestIdleCallback(startPlayback, {timeout: 2200});
+      else window.setTimeout(startPlayback, 900);
+    };
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, {once:true});
+  } else startPlayback();
 });
 
 const phone = '+33647006159';
