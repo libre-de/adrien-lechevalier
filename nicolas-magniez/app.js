@@ -27,17 +27,52 @@ document.querySelectorAll('[data-reveal-phone]').forEach(el => {
 document.querySelectorAll('[data-sms]').forEach(el => el.href = 'sms:' + phone + '?body=' + encodeURIComponent('Bonjour Nicolas, je souhaite vous parler de ma toiture.'));
 
 document.querySelectorAll('form[data-lead]').forEach(form => {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const lines = [];
-    for (const [k, v] of data.entries()) {
-      if (k !== 'consent') lines.push(`${k} : ${v}`);
+    const button = form.querySelector('[type="submit"]');
+    const feedback = form.querySelector('.form-feedback');
+    if (button.disabled) return;
+    button.disabled = true;
+    const original = button.textContent;
+    button.textContent = 'Envoi en cours…';
+    if (feedback) feedback.textContent = '';
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: {'Accept': 'application/json'},
+        body: data
+      });
+      const result = await response.json();
+      // FormSubmit retourne parfois "false" comme chaîne : ne jamais l'interpréter comme true.
+      if (!response.ok || !(result.success === true || result.success === 'true')) {
+        throw new Error(result.message || 'Envoi non confirmé');
+      }
+      if (feedback) feedback.textContent = 'Votre demande a bien été envoyée. Nicolas Magniez reviendra vers vous.';
+      form.reset();
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push({event:'lead_form_success',form_page:location.pathname});
+    } catch (error) {
+      if (feedback) feedback.textContent = 'L’envoi n’a pas pu être confirmé. Veuillez réessayer ultérieurement.';
+      console.error('Formulaire Le Carré :', error);
+    } finally {
+      button.disabled = false;
+      button.textContent = original;
     }
-    const body = ['Bonjour Nicolas,', '', ...lines, '', 'Merci.'].join('\n');
-    window.location.href = 'mailto:nicolas.magniez@me.com?subject=' + encodeURIComponent('Demande via le site Le Carré') + '&body=' + encodeURIComponent(body);
   });
+});
+
+document.querySelectorAll('.mobile-menu-toggle').forEach(toggle => {
+  const nav = document.getElementById(toggle.getAttribute('aria-controls'));
+  if (!nav) return;
+  const close = () => {toggle.setAttribute('aria-expanded','false');nav.classList.remove('is-open');};
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+  });
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click',close));
+  document.addEventListener('keydown', e => {if(e.key==='Escape')close();});
 });
 
 const journey = document.querySelector('.tile-journey');
