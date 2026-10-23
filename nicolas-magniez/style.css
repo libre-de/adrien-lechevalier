@@ -258,3 +258,11 @@ img,video{display:block;max-width:100%}
   .service-card .content{padding:12px 10px}
   .service-card p{font-size:.82rem}
 }
+
+/* Illustrations Réparer / Rénover / Préserver : hauteur maîtrisée sur desktop. */
+@media(min-width:1025px){
+  #prestations .service-card img{height:174px;aspect-ratio:auto;object-fit:cover;object-position:center}
+}
+@media(min-width:761px) and (max-width:1024px){
+  #prestations .service-card img{height:150px;aspect-ratio:auto;object-fit:cover}
+}
