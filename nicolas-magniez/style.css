@@ -195,3 +195,8 @@ img,video{display:block;max-width:100%}
 .hero-media{background:#40382f url('hero-poster.jpg') center center / cover no-repeat}
 .hero-media video{opacity:0;transition:opacity .16s ease}
 .hero-media.video-ready video{opacity:1}
+
+/* Expertise immédiatement lisible dans le hero — 23 octobre */
+.hero-expertises{font-size:clamp(1.12rem,2.3vw,1.65rem);font-weight:800;line-height:1.45;letter-spacing:-.025em;max-width:800px;margin:14px 0 18px}
+.hero-expertises span{margin:0 .18em}
+@media(max-width:760px){.hero-expertises{font-size:clamp(1rem,4.6vw,1.3rem);line-height:1.55}}
