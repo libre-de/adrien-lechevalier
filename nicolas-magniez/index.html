@@ -3,10 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Le Carré | Nicolas Magniez</title>
-  <meta name="description" content="Couvreur à Toulouse : réparation, rénovation et entretien de toiture avec Nicolas Magniez.">
+  <title>Couvreur à Toulouse | Réparation, rénovation toiture – Nicolas Magniez – Le Carré</title>
+  <meta name="description" content="Nicolas Magniez, couvreur Le Carré : réparation, rénovation, charpente, zinguerie et isolation à Toulouse, Muret, Auterive et dans le Lauragais.">
+  <link rel="canonical" href="https://libre-de.github.io/adrien-lechevalier/nicolas-magniez/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Le Carré – Nicolas Magniez, couvreur à Toulouse">
+  <meta property="og:description" content="Réparation, rénovation, charpente, zinguerie et isolation. Des solutions pensées dans votre intérêt.">
+  <meta property="og:url" content="https://libre-de.github.io/adrien-lechevalier/nicolas-magniez/">
+  <meta property="og:image" content="https://libre-de.github.io/adrien-lechevalier/nicolas-magniez/hero-poster.jpg">
+  <meta name="theme-color" content="#bf4a37">
   <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=20261023-3">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"RoofingContractor","name":"Le Carré – Nicolas Magniez","url":"https://libre-de.github.io/adrien-lechevalier/nicolas-magniez/","description":"Entreprise de couverture, réparation et rénovation de toiture à Toulouse et alentours.","areaServed":[{"@type":"City","name":"Auterive"},{"@type":"City","name":"Nailloux"},{"@type":"City","name":"Villefranche-de-Lauragais"},{"@type":"City","name":"Montastruc-la-Conseillère"},{"@type":"City","name":"Saint-Jory"},{"@type":"City","name":"Merville"},{"@type":"City","name":"Plaisance-du-Touch"},{"@type":"City","name":"Muret"},{"@type":"City","name":"Toulouse"}],"image":"https://libre-de.github.io/adrien-lechevalier/nicolas-magniez/hero-poster.jpg","hasOfferCatalog":{"@type":"OfferCatalog","name":"Expertises toiture","itemListElement":[{"@type":"OfferCatalog","name":"Réparation de toiture"},{"@type":"OfferCatalog","name":"Rénovation de couverture"},{"@type":"OfferCatalog","name":"Charpente"},{"@type":"OfferCatalog","name":"Zinguerie"},{"@type":"OfferCatalog","name":"Isolation"}]}}</script>
+  <link rel="stylesheet" href="style.css?v=20261023-4">
 </head>
 <body>
 <div class="tile-journey" aria-hidden="true">
@@ -21,7 +29,8 @@
 <header class="header">
   <div class="container nav">
     <a class="brand" href="index.html">LE CARRÉ<span>.</span></a>
-    <nav class="navlinks">
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Ouvrir le menu">Menu</button>
+    <nav class="navlinks" id="site-navigation">
       <a href="#nicolas">Nicolas Magniez</a>
       <a href="#prestations">Expertises</a>
       <a href="#realisations">Réalisations</a>
@@ -44,7 +53,7 @@
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-copy">
-      <h1>Évitez la tuile,<span class="hero-title-secondline">contactez Le Carré.</span></h1>
+      <h1>Évitez la tuile,<span class="hero-title-secondline">contactez</span><span class="hero-title-secondline">Le Carré.</span></h1>
       <div class="hero-expertises">Toiture <span>—</span> Charpente <span>—</span> Zinguerie <span>—</span> Isolation</div><p class="hero-trust">Pour Nicolas Magniez, être un bon couvreur, c'est avant tout une relation de confiance : de l'écoute, des conseils sincères et des solutions pensées dans votre intérêt.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#contact">Parlez-moi de votre projet</a>
@@ -140,13 +149,16 @@
       <div>
         <div class="eyebrow">Contact</div>
         <h2>Un projet ? Une question ? Je me tiens à votre disposition.</h2>
-        <p class="lead">Décrivez votre situation. Que ce soit pour une réparation, un entretien ou une rénovation, Nicolas Magniez reviendra vers vous pour faire le point.</p>
+        <p class="lead">Décrivez votre situation. Pour une réparation, un entretien ou une rénovation, Nicolas Magniez reviendra vers vous pour faire le point. Zone d’intervention : Toulouse, Auterive, Nailloux, Villefranche-de-Lauragais, Montastruc-la-Conseillère, Saint-Jory, Merville, Plaisance-du-Touch et Muret.</p>
         
       </div>
       <div class="contact-card">
         <h3>Décrivez-moi votre besoin</h3>
         <p>Le formulaire ouvre votre messagerie avec les informations préremplies.</p>
-        <form class="form" data-lead>
+        <form class="form" data-lead method="POST" action="https://formsubmit.co/ajax/nicolas.magniez@me.com">
+          <input type="hidden" name="_subject" value="Nouvelle demande de rappel – Le Carré">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true">
           <div class="row"><label>Votre besoin</label><select name="Besoin" required><option value="">Choisir…</option><option>Fuite / infiltration</option><option>Réparation toiture</option><option>Rénovation de toiture</option><option>Entretien / démoussage</option><option>Isolation / charpente / zinguerie</option><option>Autre</option></select></div>
           <div class="row"><label>Votre commune</label><input name="Commune" required placeholder="Ex. Tournefeuille"></div>
           <div class="row"><label>Votre nom</label><input name="Nom" required placeholder="Prénom et nom"></div>
@@ -154,6 +166,7 @@
           <div class="row"><label>Votre message</label><textarea name="Message" placeholder="Décrivez rapidement votre situation"></textarea></div>
           <label><input type="checkbox" name="consent" required> J’accepte d’être recontacté au sujet de ma demande.</label>
           <button class="btn primary" type="submit">Envoyer ma demande</button>
+          <p class="form-feedback" role="status" aria-live="polite"></p>
           
         </form>
       </div>
@@ -164,6 +177,6 @@
 <section class="cta"><div class="container"><h2>Une toiture bien pensée, une maison protégée.</h2></div></section>
 <footer class="footer"><div class="container"><span>© 2026 Le Carré — Nicolas Magniez</span><span>Mentions légales à compléter</span></div></footer>
 <div class="mobile-bar"><div class="container"><a class="btn primary" href="#contact">Je souhaite être rappelé</a></div></div>
-<script src="app.js?v=20261022-8"></script>
+<script src="app.js?v=20261023-4"></script>
 </body>
 </html>
