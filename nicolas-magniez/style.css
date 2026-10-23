@@ -236,3 +236,6 @@ img,video{display:block;max-width:100%}
   .nav .btn.phone{font-size:.72rem;padding:10px 7px}
   .mobile-menu-toggle{font-size:.8rem;padding:9px 7px}
 }
+
+/* Navigation desktop : liens davantage vers la droite après retrait du CTA secondaire. */
+@media(min-width:1101px){.navlinks{margin-left:auto;justify-content:flex-end}.navactions{flex-shrink:0}}
