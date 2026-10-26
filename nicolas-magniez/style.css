@@ -339,12 +339,6 @@ img,video{display:block;max-width:100%}
   #contact .contact-card{max-width:100%}
 }
 
-/* Restaurer le parcours de la tuile sous les contenus (pas devant les cartes/textes). */
-.tile-journey{z-index:1;pointer-events:none}
-.hero{z-index:2}
-.section{position:relative;z-index:2;background:var(--bg)}
-.section.alt{background:var(--surface-soft)}
-.section>.container{position:relative;z-index:3}
-.cta{position:relative;z-index:3}
-.footer{position:relative;z-index:3}
+/* Rétablir la superposition d'origine : tuile visible entre les sections,
+   derrière les contenus et sous le bandeau noir. */
 @media(max-width:760px){.hero-media video{display:block;width:100%;height:100%;object-fit:cover}}
