@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root{
   --bg:#f7f3ee;
   --surface:#ffffff;
@@ -329,4 +329,17 @@ img,video{display:block;max-width:100%}
   #contact .form{grid-template-columns:1fr}
   #contact .contact-method{grid-template-columns:1fr}
   #contact .contact-method p{grid-column:1}
+}
+
+/* Ajustements UX et performances mobiles */
+@media(max-width:760px){
+  #contact .container.contact-wrap{width:min(100% - 28px,1100px);margin-inline:auto}
+  #contact .grid-2{width:100%;min-width:0}
+  #contact .grid-2>div{min-width:0}
+  #contact .contact-card{max-width:100%}
+  .hero-media video{display:none}
+}
+/* Réserver l'espace des sections hors écran et limiter leur coût de rendu initial. */
+@supports (content-visibility:auto){
+  #prestations,#realisations,#avis,#contact{content-visibility:auto;contain-intrinsic-size:auto 650px}
 }
