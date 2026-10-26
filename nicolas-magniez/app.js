@@ -9,6 +9,8 @@ document.querySelectorAll('.hero-media video').forEach(video => {
   };
   // Sur mobile : l'affiche apparaît d'abord, le téléchargement vidéo attend le chargement.
   if (window.matchMedia('(max-width: 760px)').matches) {
+    // Sur smartphone, seul le poster optimisé est affiché : ne jamais lancer la vidéo.
+    return;
     video.autoplay = false;
     video.preload = 'none';
     const schedule = () => {
