@@ -278,3 +278,18 @@ img,video{display:block;max-width:100%}
 .form label input[type=checkbox]{width:auto;margin-right:8px}
 .form label a,.footer a{text-decoration:underline;text-underline-offset:2px}
 @media(max-width:760px){.expertise-details{padding:18px}}
+
+/* Accordéon expertises et citation signée — 26 octobre */
+.expertise-details{cursor:default}
+.expertise-details summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:1.3rem;font-weight:700;line-height:1.35}
+.expertise-details summary::-webkit-details-marker{display:none}
+.expertise-details summary::after{content:"+";flex:none;color:var(--brand);font-size:1.7rem;font-weight:500}
+.expertise-details[open] summary::after{content:"−"}
+.expertise-details summary:focus-visible{outline:2px solid var(--brand);outline-offset:6px}
+.expertise-details .details-hint{font-size:.83rem;font-weight:500;color:var(--muted);margin-left:auto}
+.expertise-details-content{padding-top:18px}
+.expertise-details-content p+p{margin-top:12px}
+.signature-quote{margin:0}
+.signature-quote p{font-size:clamp(2rem,4vw,3.6rem);font-weight:750;letter-spacing:-.05em;line-height:1.2;margin:0}
+.signature-quote footer{font-size:1rem;font-weight:500;color:rgba(255,255,255,.78);margin-top:17px}
+@media(max-width:760px){.expertise-details summary{font-size:1.08rem}.expertise-details .details-hint{display:none}}
