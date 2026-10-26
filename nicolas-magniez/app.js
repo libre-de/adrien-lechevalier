@@ -40,8 +40,19 @@ document.querySelectorAll('[data-reveal-phone]').forEach(el => {
 document.querySelectorAll('[data-sms]').forEach(el => el.href = 'sms:' + phone + '?body=' + encodeURIComponent('Bonjour Nicolas, je souhaite vous parler de ma toiture.'));
 
 document.querySelectorAll('form[data-lead]').forEach(form => {
+  const telInput = form.querySelector('[name="Téléphone"]');
+  const mailInput = form.querySelector('[name="Email"]');
+  [telInput, mailInput].forEach(input => input?.addEventListener('input', () => telInput?.setCustomValidity('')));
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    const telephone = form.querySelector('[name="Téléphone"]');
+    const email = form.querySelector('[name="Email"]');
+    if (!telephone?.value.trim() && !email?.value.trim()) {
+      telephone?.setCustomValidity('Renseignez un téléphone ou une adresse e-mail.');
+      telephone?.reportValidity();
+      return;
+    }
+    telephone?.setCustomValidity('');
     if (!form.reportValidity()) return;
     const button = form.querySelector('[type="submit"]');
     const feedback = form.querySelector('.form-feedback');
