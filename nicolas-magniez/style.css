@@ -342,3 +342,12 @@ img,video{display:block;max-width:100%}
 /* Rétablir la superposition d'origine : tuile visible entre les sections,
    derrière les contenus et sous le bandeau noir. */
 @media(max-width:760px){.hero-media video{display:block;width:100%;height:100%;object-fit:cover}}
+
+/* Formulaire : saisie légère et texte d'aide discret */
+#contact .form input:not([type=checkbox]),#contact .form select,#contact .form textarea{font-size:.92rem;font-weight:400}
+#contact .form input::placeholder,#contact .form textarea::placeholder{font-size:.88rem;font-weight:400;color:#77716c;opacity:1}
+#contact .form select:invalid,#contact .form select:has(option[value=""]:checked){font-weight:400;color:#77716c;font-size:.88rem}
+#contact .form select option{font-weight:400;color:var(--text)}
+@media(max-width:760px){#contact .form input:not([type=checkbox]),#contact .form select,#contact .form textarea{font-size:16px}}
+
+.legal-page{max-width:820px;padding-block:48px 70px}.legal-page h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15}.legal-page h2{font-size:1.22rem;margin:32px 0 9px}.legal-page p{line-height:1.72;color:var(--muted)}.legal-page a:not(.legal-back){text-decoration:underline;text-underline-offset:3px}.legal-intro{font-size:1.05rem}.legal-back{color:var(--brand);font-weight:650}
