@@ -266,3 +266,15 @@ img,video{display:block;max-width:100%}
 @media(min-width:761px) and (max-width:1024px){
   #prestations .service-card img{height:150px;aspect-ratio:auto;object-fit:cover}
 }
+
+/* Retour client du 26 octobre */
+.network-note{color:var(--muted);margin:12px 0;font-size:.94rem}
+.expertise-details{margin-top:24px;padding:24px 28px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.expertise-details h3{font-size:1.3rem;margin:0 0 10px}
+.expertise-details p{color:var(--muted);margin:0}
+.contact-method{margin:0;border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:10px;min-width:0}
+.contact-method legend{font-weight:700;padding:0 5px}
+.contact-method p{margin:0;font-size:.88rem}
+.form label input[type=checkbox]{width:auto;margin-right:8px}
+.form label a,.footer a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:760px){.expertise-details{padding:18px}}
