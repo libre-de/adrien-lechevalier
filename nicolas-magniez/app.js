@@ -1,27 +1,26 @@
-// Afficher l'image dès le premier rendu, puis remplacer par la vidéo dès qu'une frame est prête.
+// Afficher immédiatement le poster, puis charger la vidéo sans bloquer le rendu initial.
 document.querySelectorAll('.hero-media video').forEach(video => {
+  const mobile = window.matchMedia('(max-width: 760px)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection?.saveData === true;
   const showVideo = () => video.closest('.hero-media')?.classList.add('video-ready');
-  if (video.readyState >= 2) showVideo();
-  else video.addEventListener('loadeddata', showVideo, {once:true});
-  const startPlayback = () => {
-    const play = video.play();
-    if (play && typeof play.catch === 'function') play.catch(() => {});
+  video.addEventListener('loadeddata', showVideo, {once:true});
+  if (reduced || saveData) return; // Conserver l'image plutôt que forcer le téléchargement.
+  const play = () => {
+    if (!video.isConnected) return;
+    const promise = video.play();
+    promise?.catch?.(() => {});
   };
-  // Sur mobile : l'affiche apparaît d'abord, le téléchargement vidéo attend le chargement.
-  if (window.matchMedia('(max-width: 760px)').matches) {
-    // Sur smartphone, seul le poster optimisé est affiché : ne jamais lancer la vidéo.
-    return;
-    video.autoplay = false;
-    video.preload = 'none';
+  if (mobile) {
+    // Laisser finir les ressources critiques avant d'envoyer la requête vidéo.
     const schedule = () => {
-      if ('requestIdleCallback' in window) window.requestIdleCallback(startPlayback, {timeout: 2200});
-      else window.setTimeout(startPlayback, 900);
+      if ('requestIdleCallback' in window) requestIdleCallback(play, {timeout:3000});
+      else setTimeout(play, 1100);
     };
     if (document.readyState === 'complete') schedule();
     else window.addEventListener('load', schedule, {once:true});
-  } else startPlayback();
+  } else play();
 });
-
 const phone = '+33647006159';
 document.querySelectorAll('[data-phone]').forEach(el => el.href = 'tel:' + phone);
 document.querySelectorAll('[data-reveal-phone]').forEach(el => {
