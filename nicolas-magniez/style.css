@@ -134,7 +134,7 @@ img,video{display:block;max-width:100%}
 .cta > .container{position:relative;z-index:2}
 @media(max-width:760px){.tile-follower{width:62px!important;height:76px!important}}
 
-/* Tuile utilisateur conservée telle quelle : 2(1).png */
+/* Tuile utilisée : assets/tuile-toiture.png */
 .tile-follower{width:128px!important;height:104px!important;filter:drop-shadow(0 8px 12px rgba(55,27,18,.16))}
 .tile-follower img.tile-svg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:contain;display:block;transition:opacity .35s ease,transform .35s ease}
 .tile-follower svg.tile-square{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
@@ -148,7 +148,7 @@ img,video{display:block;max-width:100%}
 .hero-expertises span{color:#e8a28e;margin:0 .25em}
 .navlinks{margin-left:auto}
 .experience-pill{display:inline-block;margin-left:12px;padding:5px 11px;background:#fde8e2;color:#963c2b;border-radius:999px;letter-spacing:0;font-size:.81rem;text-transform:none}
-.service-card:has(img[src="vue-toulouse-toit.jpg"]) img{object-position:center 76%}
+.service-card:has(img[src="assets/vue-toulouse-toit.jpg"]) img{object-position:center 76%}
 .form,.form input,.form textarea,.form select,.contact-card{font-family:Inter,system-ui,-apple-system,sans-serif}
 .form input,.form select,.form textarea{font-size:1rem;font-weight:450;line-height:1.5}
 .form label{font-weight:600;letter-spacing:0}
@@ -192,7 +192,7 @@ img,video{display:block;max-width:100%}
 .section > .container{position:relative;z-index:2}
 
 /* Image de couverture immédiate, vidéo révélée à sa première frame prête. */
-.hero-media{background:#40382f url('hero-poster.jpg') center center / cover no-repeat}
+.hero-media{background:#40382f url('assets/hero-poster.jpg') center center / cover no-repeat}
 .hero-media video{opacity:0;transition:opacity .16s ease}
 .hero-media.video-ready video{opacity:1}
 
